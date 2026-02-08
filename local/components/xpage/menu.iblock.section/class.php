@@ -9,6 +9,18 @@ use Bitrix\Main\Loader;
 
 class MenuSectionComponent extends CBitrixComponent
 {
+    public function executeComponent()
+    {
+        if ($this->startResultCache()) {
+            if (!Loader::includeModule("iblock")) {
+                $this->abortResultCache();
+                return;
+            }
+
+            $this->arResult["ITEMS"] = $this->getMenuTree();
+            $this->includeComponentTemplate();
+        }
+    }
     public function onPrepareComponentParams($arParams)
     {
         return [
@@ -29,6 +41,7 @@ class MenuSectionComponent extends CBitrixComponent
             ->setSelect([
                 'ID',
                 'NAME',
+                'IBLOCK_SECTION_ID',
                 'UF_LINK'
             ])
             ->setFilter([
@@ -85,18 +98,5 @@ class MenuSectionComponent extends CBitrixComponent
             }
         }
         return $tree;
-    }
-
-    public function executeComponent()
-    {
-        if ($this->startResultCache()) {
-            if (!Loader::includeModule("iblock")) {
-                $this->abortResultCache();
-                return;
-            }
-
-            $this->arResult["ITEMS"] = $this->getMenuTree();
-            $this->includeComponentTemplate();
-        }
     }
 }
