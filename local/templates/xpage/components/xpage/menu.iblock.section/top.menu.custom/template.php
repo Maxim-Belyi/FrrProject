@@ -15,14 +15,14 @@
                     :popper-triggers="['hover']"
             >
                 <template #trigger>
-                    <a class="header-menu__title link" href="<?= $arSection["SECTION_PAGE_URL"] ?>">
+                    <a class="header-menu__title link" href="<?= $arSection["URL"] ?>">
                         <?= $arSection["NAME"] ?>
                     </a>
                 </template>
 
                 <div class="header-menu__list">
                     <?php foreach ($arSection["SUBMENU"] as $subItem): ?>
-                        <a class="header-menu__link link" href="<?= $subItem["URL"] ?? $subItem["DETAIL_PAGE_URL"] ?>">
+                        <a class="header-menu__link link" href="<?= $subItem["URL"] ?? $subItem["URL"] ?>">
                             <?= $subItem["NAME"] ?>
                         </a>
                     <?php endforeach; ?>
@@ -32,7 +32,7 @@
         <?php else: ?>
             <?php ?>
             <div class="header-menu__item">
-                <a class="header-menu__title link" href="<?= $arSection["SECTION_PAGE_URL"] ?>">
+                <a class="header-menu__title link" href="<?= $arSection["URL"] ?>">
                     <?= $arSection["NAME"] ?>
                 </a>
             </div>

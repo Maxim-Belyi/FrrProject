@@ -15,7 +15,6 @@ class Tools
 
     }
     public static function getIblockId(string $code): int
-
     {
         if (!Loader::includeModule('iblock')) {
             return 0;

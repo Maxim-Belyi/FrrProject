@@ -26,6 +26,7 @@ ehthumbs.db
 # IDE и редакторы
 /.idea
 /.vscode/
+test.php
 
 # Docker и контейнеры
 /.docker
