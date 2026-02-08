@@ -1,7 +1,6 @@
 <?php
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
-// 1. Импорты (use) всегда идут в самом верху, вне класса
 use Bitrix\Iblock\ElementTable;
 use Bitrix\Main\Entity\Query;
 use Bitrix\Main\Loader;
@@ -16,18 +15,7 @@ class MenuSectionComponent extends CBitrixComponent
         ];
     }
 
-    public function executeComponent()
-    {
-        if ($this->startResultCache()) {
-            if (!Loader::includeModule("iblock")) {
-                $this->abortResultCache();
-                return;
-            }
 
-            $this->arResult["ITEMS"] = $this->getMenuTree();
-            $this->includeComponentTemplate();
-        }
-    }
 
     private function getMenuTree()
     {
@@ -94,5 +82,17 @@ class MenuSectionComponent extends CBitrixComponent
             }
         }
         return $tree;
+    }
+    public function executeComponent()
+    {
+        if ($this->startResultCache()) {
+            if (!Loader::includeModule("iblock")) {
+                $this->abortResultCache();
+                return;
+            }
+
+            $this->arResult["ITEMS"] = $this->getMenuTree();
+            $this->includeComponentTemplate();
+        }
     }
 }
