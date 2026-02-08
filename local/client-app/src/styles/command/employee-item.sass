@@ -1,0 +1,31 @@
+.employee-item
+	display: flex
+	align-items: center
+	width: 100%
+	padding: var(--padding-xl) 0
+	border-right: 1px solid var(--default-border)
+	border-bottom: 1px solid var(--default-border)
+	border-left: 1px solid var(--default-border)
+
+	@include media('max', 'tablet-xl')
+		padding: var(--padding-xl)
+
+	&__info
+		display: flex
+		flex-direction: column
+		flex-grow: 1
+		gap: var(--gap-xs)
+		margin-left: 50%
+
+		@include media('max', 'tablet-xl')
+			margin-left: 0
+
+	&__caption
+		color: var(--color-neutral-500)
+
+	&--row
+		padding: var(--padding-xl)
+
+		& .employee-item
+			&__info
+				margin-left: 0

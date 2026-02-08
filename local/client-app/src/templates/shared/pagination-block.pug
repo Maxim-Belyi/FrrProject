@@ -1,0 +1,7 @@
+mixin pagination-block
+	.pagination-block&attributes(attributes)
+		button.btn.btn--color-secondary.pagination-block__btn
+			span.btn__text Показать еще
+
+		.pagination-block__pagination
+			base-pagination(:total="100" :limit="10" :max-buttons="3")

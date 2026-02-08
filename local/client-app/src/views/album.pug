@@ -1,0 +1,26 @@
+extends /base/_head
+block vars
+	- let title = 'Детальная альбома'
+	- let layoutClass = 'layout'
+	- let bodyClass = null
+
+block content
+	+header({})
+
+	main.page__main
+		+page-header({title: 'Заголовок альбома в одну или несколько строк h1', breadcrumbs: ['Главная', 'Медиа', 'Заголовок альбома в одну или несколько строк h1']})
+			+slot('actions')
+				.badges
+					.badges__list
+						.badge
+							+icon('calendar-mini').badge__icon
+							.badge__text 6 июня
+						.badge
+							+icon('image').badge__icon
+							.badge__text 342
+
+				+social-share({})
+
+		include ../templates/media/album
+
+	include ../templates/shared/footer

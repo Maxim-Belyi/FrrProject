@@ -1,0 +1,21 @@
+.mobile-menu
+	.wrapper
+		.mobile-menu__header
+			.mobile-menu__logo.logo
+				+image(
+					{
+						src: 'img/logo-header.svg',
+						width: '220',
+						height: '27'
+					}
+				).logo__img
+			+icon('close').mobile-menu__close(data-menu-close)
+		.mobile-menu__inner
+			.mobile-menu__list
+				a(href="#").mobile-menu__link.link Медиа
+				a(href="#").mobile-menu__link.link Методический кабинет
+				a(href="#").mobile-menu__link.link Проекты
+				a(href="#").mobile-menu__link.link FAQ
+				a(href="#").mobile-menu__link.link Команда
+				a(href="#").mobile-menu__link.link Контакты
+			.mobile-menu__btn.btn.btn--color-primary Интерактивная карта

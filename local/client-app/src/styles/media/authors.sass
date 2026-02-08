@@ -1,0 +1,25 @@
+.authors
+	&__list
+		display: flex
+		flex-direction: column
+		gap: var(--gap-l)
+
+	&__item
+		display: flex
+		align-items: center
+		gap: var(--gap-m)
+
+		&-img
+			--width: 80px
+			--object-fit: cover
+			--object-position: center
+			--aspect-ratio: 1 / 1
+			--radius: 50%
+
+		&-info
+			display: flex
+			flex-direction: column
+			gap: var(--gap-xs)
+
+		&-caption
+			color: var(--color-neutral-500)

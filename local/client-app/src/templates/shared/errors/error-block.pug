@@ -1,0 +1,26 @@
+mixin error-block(title, texts, list, buttonText, img)
+	section.section.error-block
+		.wrapper
+			.error-block__wrapper
+				.error-block__info
+					h1.error-block__title.title.title--h1!=title
+					.error-block__desc
+						if texts
+							each item in texts
+								p!=item
+
+						if list
+							ul
+								each item in list
+									li!=item
+					a.btn.btn--color-secondary.error-block__btn(href=`${BASE_URL}`)
+						span.btn__text=buttonText
+						+icon('arrow-right').btn__icon
+
+				+image(
+					{
+						src: img,
+						width: '900',
+						height: '413',
+					},
+				).error-block__img

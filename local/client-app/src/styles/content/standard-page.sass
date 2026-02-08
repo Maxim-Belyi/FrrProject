@@ -1,0 +1,30 @@
+.standard-page
+	flex-grow: 1
+	padding-bottom: var(--padding-3xl)
+
+	@include dotted-grid('gray', 'vertical')
+
+	& .wrapper
+		display: flex
+		flex-direction: column
+		flex-grow: 1
+
+	&__wrapper
+		display: flex
+		flex-direction: column
+		flex-grow: 1
+		gap: var(--gap-s)
+
+	&__content
+		display: flex
+		flex-direction: column
+		flex-grow: 1
+		gap: var(--gap-3xl)
+
+		width: 100%
+		max-width: 900px
+		margin-right: auto
+		margin-left: auto
+
+		& .soc-share
+			margin-top: auto

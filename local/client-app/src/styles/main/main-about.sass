@@ -1,0 +1,101 @@
+.main-about
+	padding-top: var(--padding-3xl)
+
+	@include dotted-grid('gray')
+
+	&__bg
+		position: absolute
+		inset: 0
+		display: flex
+		align-items: flex-end
+		justify-content: center
+		pointer-events: none
+
+		@include media('max', 'laptop-xxl')
+			position: relative
+			height: fluid(700, 460)
+
+			@include out-wrapper
+
+		&-image
+			--width: fluid(1160, 700)
+			--object-fit: contain
+
+			@include media('max', 'laptop-xxl')
+				--object-position: 75% center
+				position: absolute
+				height: 100%
+
+			@include media('max', 'tablet')
+				--object-fit: cover
+
+	&__wrapper
+		position: relative
+		display: flex
+		flex-direction: column
+		gap: var(--gap-m)
+		min-height: 1260px
+
+	&__top
+		position: relative
+		display: grid
+		grid-template-columns: repeat(2, minmax(0, 1fr))
+		column-gap: var(--gap-xs)
+		row-gap: fluid(132, 80)
+
+		@include media('max', 'laptop-xxl')
+			display: flex
+			flex-direction: column
+			gap: var(--gap-3xl)
+			order: -1
+
+	&__block
+		display: flex
+		flex-direction: column
+		align-items: flex-start
+		gap: var(--gap-xxl)
+		width: 100%
+		max-width: 608px
+
+		@include media('max', 'tablet')
+			max-width: 100%
+
+	&__bottom
+		display: flex
+		justify-content: flex-end
+		margin-top: auto
+
+		@include media('max', 'tablet')
+			margin-top: 0
+
+	&__banner
+		z-index: var(--z-index-above)
+		width: 100%
+		max-width: 620px
+		background-color: var(--color-neutral-100)
+
+		&-wrapper
+			display: flex
+			flex-direction: column
+			align-items: flex-start
+			gap: var(--gap-xxl)
+
+			padding: var(--padding-xl)
+
+			background-repeat: no-repeat
+			background-position: right
+			background-size: contain
+
+			@include image('../img/content/main/map-bg', 'svg')
+
+			@include media('max', 'tablet')
+				background-position: center
+				background-size: cover
+
+		&-btn
+			z-index: var(--z-index-above)
+
+		&-title
+			z-index: var(--z-index-above)
+			width: 100%
+			max-width: 262px

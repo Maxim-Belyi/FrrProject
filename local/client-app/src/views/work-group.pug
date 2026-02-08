@@ -1,0 +1,24 @@
+extends /base/_head
+block vars
+	- let title = 'Новости'
+	- let layoutClass = 'layout'
+	- let bodyClass = null
+
+block content
+	+header({})
+
+	main.page__main
+		+page-header({title: 'Команда', breadcrumbs: ['Главная', 'Команда']})
+			+slot('actions')
+				nav.tabs
+					ul.tabs__list
+						li.tabs__item
+							a(href="#").tab.tab--default Команда региона
+						li.tabs__item
+							a(href="#").tab.tab--default.active Проектная команда
+						li.tabs__item
+							a(href="#").tab.tab--default Партнеры и инвесторы
+
+		include ../templates/command/group
+
+	include ../templates/shared/footer

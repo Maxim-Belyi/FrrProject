@@ -1,0 +1,24 @@
+extends /base/_head
+block vars
+	- let title = 'Фото'
+	- let layoutClass = 'layout'
+	- let bodyClass = null
+
+block content
+	+header({})
+
+	main.page__main
+		+page-header({title: 'Медиа', breadcrumbs: ['Главная', 'Медиа']})
+			+slot('actions')
+				nav.tabs
+					ul.tabs__list
+						li.tabs__item
+							a(href="#").tab.tab--default Новости
+						li.tabs__item
+							a(href="#").tab.tab--default.active Фото
+						li.tabs__item
+							a(href="#").tab.tab--default Видео
+
+		include ../templates/media/photos
+
+	include ../templates/shared/footer

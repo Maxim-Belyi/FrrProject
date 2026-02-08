@@ -1,0 +1,6 @@
+// Пример:
+// @include icon("icon", "background or mask")
+// Сниппет: icon
+
+@mixin icon($name, $mode: 'mask')
+	#{$mode}: url('/__spritemap#icon-#{$name}-view') center no-repeat

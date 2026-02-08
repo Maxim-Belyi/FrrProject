@@ -1,0 +1,128 @@
+@import 'swiper/scss'
+
+.swiper
+	width: 100%
+
+	.swiper-slide
+		height: auto
+
+.swiper-buttons
+	display: flex
+	gap: 4px
+
+.swiper-button
+	--swiper-button-size: 44px
+	--swiper-button-border-radius: 25px
+	--swiper-button-bg: var(--color-neutral-300)
+	--swiper-button-bg-hover: var(--color-neutral-400)
+	--swiper-button-bg-disabled: var(--color-neutral-300)
+	--swiper-button-color: var(--color-neutral-900)
+	--swiper-button-color-hover: var(--color-neutral-900)
+	--swiper-button-color-disabled: var(--color-neutral-400)
+	--swiper-button-icon: 20px
+	--swiper-button-px: 12px
+	--swiper-button-py: 12px
+	// -----------------
+	--btn-corners-size: 6px
+	--btn-corners-color: var(--color-neutral-900)
+	--calc-corners-size: calc(100% - var(--btn-corners-size))
+
+	position: relative
+
+	display: flex
+	align-items: center
+	justify-content: center
+
+	width: var(--swiper-button-size)
+	height: var(--swiper-button-size)
+	padding: var(--padding-s)
+
+	border-radius: var(--swiper-button-border-radius)
+	background-color: var(--swiper-button-bg)
+
+	color: var(--swiper-button-color)
+
+	transition: background-color 0.3s ease, color 0.3s ease
+
+	cursor: pointer
+
+	&::before
+		content: ''
+		position: absolute
+		inset: 0
+
+		width: 100%
+		height: 100%
+
+		border: 1px solid var(--btn-corners-color)
+
+		opacity: 0
+
+		transition: opacity 0.3s, scale 0.3s
+		will-change: transform
+		scale: 0.8 0.6
+		clip-path: polygon(0 0, var(--btn-corners-size) 0, var(--btn-corners-size) 2px, var(--calc-corners-size) 2px, var(--calc-corners-size) 0, 100% 0, 100% var(--btn-corners-size), calc(100% - 2px) var(--btn-corners-size), calc(100% - 2px) var(--calc-corners-size), 100% var(--calc-corners-size), 100% 100%, var(--calc-corners-size) 100%, var(--calc-corners-size) calc(100% - 2px), var(--btn-corners-size) calc(100% - 2px), var(--btn-corners-size) 100%, 0 100%, 0 var(--calc-corners-size), 2px var(--calc-corners-size), 2px var(--btn-corners-size), 0 var(--btn-corners-size))
+
+	&::after
+		content: ''
+		width: var(--swiper-button-icon)
+		height: var(--swiper-button-icon)
+		background-color: currentcolor
+		mask-size: contain
+
+	@include hover
+		--swiper-button-bg: var(--swiper-button-bg-hover)
+		--swiper-button-color: var(--swiper-button-color-hover)
+
+		&::before
+			opacity: 1
+			scale: 1
+
+	&.swiper-button-disabled
+		--swiper-button-bg: var(--swiper-button-bg-disabled)
+		--swiper-button-color: var(--swiper-button-color-disabled)
+
+		cursor: not-allowed
+		pointer-events: none
+
+	&.swiper-button-prev
+		&::after
+			@include icon('arrow-left', 'mask')
+
+	&.swiper-button-next
+		&::after
+			@include icon('arrow-right', 'mask')
+
+	&--small
+		--swiper-button-size: 32px
+		--swiper-button-px: 8px
+		--swiper-button-py: 8px
+
+.swiper-pagination
+	--swiper-pagination-size: 10px
+	--swiper-pagination-bg: var(--color-neutral-200)
+	--swiper-pagination-bg-active: var(--color-primary-500)
+	--swiper-pagination-gap: 4px
+
+	position: absolute
+	right: 0
+	bottom: 16px
+	left: 0
+	z-index: var(--z-index-above)
+
+	display: flex
+	justify-content: center
+
+	margin: 0 auto
+
+.swiper-pagination-bullet
+	flex-shrink: 0
+	width: var(--swiper-pagination-size)
+	height: var(--swiper-pagination-size)
+	margin: var(--swiper-pagination-gap)
+	border-radius: 50%
+	background-color: var(--swiper-pagination-bg)
+	transition: background-color 0.3s ease
+
+	&.swiper-pagination-bullet-active
+		--swiper-pagination-bg: var(--swiper-pagination-bg-active)

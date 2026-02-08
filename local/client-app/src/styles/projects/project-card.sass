@@ -1,0 +1,39 @@
+.project-card
+	position: relative
+	display: flex
+	align-items: flex-start
+	gap: var(--gap-l)
+	padding: var(--padding-xl) 0
+	transition: background-color 0.3s
+
+	@include hover
+		& .project-card
+			&__title
+				color: var(--color-primary-500)
+
+	&:not(:first-child)
+		border-top: 1px solid var(--default-border)
+
+	&__image
+		--width: fluid(220, 98)
+		--object-fit: contain
+		--aspect-ratio: 220 / 150
+		flex-shrink: 0
+
+	&__info
+		display: flex
+		flex-direction: column
+		gap: var(--gap-xs)
+
+	&__title
+		transition: color 0.3s
+
+		@include media('max', 'mobile-xl')
+			@include cut-string(2)
+
+	&__caption
+		color: var(--color-neutral-500)
+
+	&__link
+		position: absolute
+		inset: 0

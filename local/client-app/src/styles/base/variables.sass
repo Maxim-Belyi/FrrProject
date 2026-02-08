@@ -1,0 +1,142 @@
+\:root
+	// Настройки
+	/* Минимальная ширина страницы */
+	--page-min-width: 375px
+
+	/* Ширина полотна (макета) */
+	--page-max-width: 1920px
+
+	/* Wrapper */
+	--wrapper-padding: var(--padding-xl)
+	--wrapper-max-width: 1880px
+
+	/*  Размеры блоков */
+	--app-height: 100svh
+	--header-height: fluid(85, 55)
+
+	// Цвета
+	// Основной цвет
+	--color-primary-300: #133383
+	--color-primary-400: #123dca
+	--color-primary-500: #024aff
+	--color-primary-600: #3d70dd
+	--color-primary-700: #8aa4e7
+
+	// Второстепенный цвет
+	--color-neutral-white: #fff
+	--color-neutral-white-trans-10: rgba(255, 255, 255, 0.1)
+	--color-neutral-100: #f1f2f4
+	--color-neutral-100-dark: #101014
+	--color-neutral-100-trans: 241, 242, 244
+	--color-neutral-200: #fff
+	--color-neutral-200-dark: #191c21
+	--color-neutral-300: #dee1e6
+	--color-neutral-300-dark: #282e33
+	--color-neutral-400: #bdc2cb
+	--color-neutral-400-dark: #454f59
+	--color-neutral-500: #7c8287
+	--color-neutral-500-dark: #8c9bab
+	--color-neutral-900: #161a1d
+	--color-neutral-black: #000
+	--color-neutral-black-trans-7: rgba(0, 0, 0, 0.15)
+
+	// Вспомогательный цвет
+	--color-negative: #e24343
+	--color-negative-light: #fbe3e3
+	--color-positive: #42ad3f
+	--color-positive-light: #edf7ec
+	--color-warning: #e7a516
+	--color-warning-light: #fcf2dc
+	--color-info: #2e92db
+	--color-info-light: #e0effa
+
+	// Градиенты
+	--gradient-100: linear-gradient(270deg, #fff 0%, rgba(255, 255, 255, 0) 100%)
+	--gradient-500: linear-gradient(97.19deg, #422eff 0%, #fff 137.09%)
+
+	// gap
+	--gap-3xs: 2px
+	--gap-xxs: 4px
+	--gap-xs: fluid(8, 6)
+	--gap-s: fluid(12, 10)
+	--gap-m: fluid(16, 12)
+	--gap-l: fluid(20, 16)
+	--gap-xl: fluid(24, 18)
+	--gap-xxl: fluid(32, 24)
+	--gap-3xl: fluid(48, 36)
+	--gap-4xl: fluid(80, 60)
+
+	// padding
+	--padding-xxs: 2px
+	--padding-xs: 4px
+	--padding-s: 8px
+	--padding-m: 12px
+	--padding-l: fluid(16, 12)
+	--padding-xl: fluid(20, 16)
+	--padding-xxl: fluid(32, 24)
+	--padding-3xl: fluid(48, 32)
+
+	// Тени
+	--shadow-xl: 0 50px 60px rgba(0, 0, 0, 0.08)
+	--shadow-l: 4px 4px 42px 0px rgba(40, 40, 40, 0.3)
+	--shadow-m: 0 15px 20px rgba(0, 0, 0, 0.04)
+	--shadow-s: 0 6px 8px rgba(0, 0, 0, 0.02)
+	--shadow-xs: 0 4px 4px rgba(0, 0, 0, 0.02)
+	--shadow: rgba(40, 40, 40, 0.3)
+
+	// Радиусы
+	--radius-l: fluid(20, 12)
+	--radius-m: fluid(16, 10)
+	--radius-s: 10px
+	--radius-xs: 6px
+
+	// Типографика
+	--font-family-primary: 'TT Firs Neue', sans-serif
+	// =======================
+	--font-size-h1: fluid(64, 28)
+	--font-size-h2: fluid(48, 28)
+	--font-size-h3: fluid(32, 24)
+	--font-size-h4: fluid(24, 20)
+	--font-size-h5: fluid(20, 18)
+	--font-size-h6: fluid(18, 16)
+	// =======================
+	// 16px - default
+	--font-size-text-l: fluid(18, 16)
+	--font-size-text-m: 16px
+	--font-size-text-s: 14px
+	--font-size-text-xs: fluid(12, 11)
+
+	// Межстрочный интервал
+	--line-height-xxl: 1.4
+	--line-height-xl: 1.25
+	--line-height-l: 1.2
+	--line-height-m: 1.1
+	--line-height-s: 1
+	--line-height-xs: 0.9
+
+	// Межбуквенный интервал
+	--letter-spacing-m: -0.04em
+	--letter-spacing-s: -0.03em
+
+	// =======================
+	--font-family: var(--font-family-primary)
+	--font-size: var(--font-size-text-m)
+	--line-height: var(--line-height-xl)
+	--font-weight: 400
+	--body-bg: var(--color-neutral-200)
+	--body-color: var(--color-neutral-900)
+	--default-border: var(--color-neutral-300)
+
+	// Scrollbar
+	--scrollbar-color-background: var(--color-neutral-300)
+	--scrollbar-color-thumb: var(--color-primary-500)
+
+	// Индексы
+	--z-index-base: 0
+	--z-index-above: 1
+	--z-index-above-secondary: 2
+	--z-index-below: -1
+	--z-index-below-secondary: -2
+	--z-index-dropdown: calc(var(--z-index-above) * 3)
+	--z-index-header: calc(var(--z-index-dropdown) * 3)
+	--z-index-modal: calc(var(--z-index-header) * 3)

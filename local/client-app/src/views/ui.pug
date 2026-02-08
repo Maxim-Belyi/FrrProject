@@ -1,0 +1,913 @@
+extends /base/_head
+
+block head
+	style.
+		.project-view {
+			--view-bg: var(--body-bg);
+			--view-color: var(--body-color);
+			--view-block-bg: var(--color-neutral-100);
+			--view-border: var(--default-border);
+			--view-link: var(--body-color);
+			--view-link-hover: var(--color-primary-500);
+			--view-title-color: var(--body-color);
+			--view-check: var(--color-primary-300);
+			position: relative;
+			z-index: 0;
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			min-height: 100vh;
+			padding: fluid(60, 40) 0;
+			background-color: var(--view-bg);
+			color: var(--view-color);
+		}
+
+		.project-view .default-input__input {
+			min-width: 250px;
+		}
+
+		.wrapper {
+			display: flex;
+			flex: 1 1 100%;
+			flex-direction: column;
+		}
+
+		.pv-title {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 20px;
+			margin-bottom: fluid(60, 24);
+		}
+
+		.pv-title__text {
+			margin: 0;
+			color: var(--view-color);
+			font-size: fluid(32, 18);
+			font-weight: 600;
+		}
+
+		.pv-logo {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.pv-logo__image.img {
+			--width: fluid(270, 180);
+			--aspect-ratio: 270/70;
+			--object-fit: contain;
+		}
+
+		.pv-blocks {
+			width: 100%;
+		}
+
+		.pv-blocks--columns {
+			column-count: auto;
+			column-width: clamp(16rem, 45vw, 32rem);
+			column-gap: 8px;
+		}
+
+		.pv-blocks--columns .pv-block {
+			margin-bottom: 8px;
+			break-inside: avoid;
+		}
+
+		.pv-blocks--list {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr);
+			gap: 16px;
+		}
+
+		.pv-block {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			padding: fluid(24, 20);
+			background-color: var(--view-block-bg);
+		}
+
+		.pv-block__video {
+			width: 500px;
+			height: 333px;
+		}
+
+		.pv-block--dark {
+			background-color: var(--color-neutral-900);
+			color: var(--color-neutral-100);
+		}
+
+		.pv-block--dark .default-input {
+			--di-color: var(--color-neutral-100);
+			--di-placeholder-color: var(--color-primary-400);
+			--di-bg: var(--color-neutral-900);
+			--di-bg-hover: var(--color-neutral-900);
+			--di-bg-focus: var(--color-neutral-900);
+			--di-border-color: var(--color-primary-400);
+			--di-border-color-hover: var(--color-primary-200);
+			--di-border-color-focus: var(--color-primary-200);
+			--di-label-color: var(--color-neutral-200);
+			--di-bg-loading: var(--color-neutral-900);
+			--di-bg-loading-gradient: var(--color-neutral-500);
+		}
+
+		.pv-block__title {
+			margin: 0 0 fluid(24, 40);
+			color: var(--view-title-color);
+			font-size: fluid(32, 18);
+			font-weight: 600;
+		}
+
+		.pv-block__nav {
+			display: flex;
+			flex-direction: column;
+			gap: 14px;
+		}
+
+		.pv-block__preview {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 16px;
+			width: 100%;
+		}
+
+		.pv-block__items {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+			width: 100%;
+			max-width: 100%;
+		}
+
+		.pv-block__item {
+			max-width: 100%;
+		}
+
+		.pv-block__devider {
+			flex: 1 1 100%;
+			width: 100%;
+			border-bottom: 1px solid var(--view-border);
+		}
+
+		.pv-block__items--row {
+			flex: 1 1 100%;
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-items: flex-end;
+			column-gap: 16px;
+		}
+
+		.pv-block__items--align-start {
+			align-items: flex-start;
+		}
+
+		.pv-link {
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+			gap: 8px;
+			margin: 0;
+			padding: 0;
+			color: var(--view-link);
+			font-size: fluid(18, 16);
+			font-weight: 600;
+			text-decoration: none;
+			transition: color 0.3s ease;
+		}
+
+		.pv-link::after {
+			content: '';
+			display: block;
+			width: 24px;
+			height: 24px;
+			background-color: var(--view-check);
+		}
+
+		.pv-link:not(:last-child) {
+			padding-bottom: 14px;
+			border-bottom: 1px solid var(--view-border);
+		}
+
+		@media (hover: hover) and (pointer: fine) {
+			.pv-link:hover {
+				color: var(--view-link-hover);
+			}
+		}
+
+		.pv-link.checked::after {
+			background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.38541 10.4817L13.2648 3.46179L14.716 4.7934L7.83668 11.8133C7.06234 12.6035 5.76696 12.6202 4.9712 11.8502L1.28369 8.28204L2.69791 6.91362L6.38541 10.4817Z' fill='%23422EFF'/%3E%3C/svg%3E%0A");
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: 16px;
+		}
+
+		.gallery {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 30px;
+		}
+
+		.gallery__item {
+			display: block;
+			width: 375px;
+			height: 250px;
+		}
+
+block vars
+	- let title = 'UI Kit'
+	- let layoutClass = null
+	- let bodyClass = null
+
+block content
+	main.page__main
+		+page-header({title: 'UI Kit',})
+		section.project-view
+			.wrapper
+				tabs-template(initial-tab="All" active-class="active")
+					template(#default="{ activeTab, getActiveClass, tabEvents }")
+						nav.tabs
+							ul.tabs__list(style="overflow: hidden; flex-wrap: wrap")
+								each tab in ['All', 'Breadcrumbs', 'Typography', 'Buttons', 'Links', 'Icons', 'Dropdowns', 'Tabs', 'Accordion', 'Modals', 'Gallery', 'Slider', 'Tips', 'Pagination', 'Video', 'Forms', 'Show more', 'Inputs', 'Select', 'Checkbox', 'Radio', 'Switch', 'Search', 'Date', 'File', 'Range', 'Loaders', 'Toasts', 'I18n']
+									li.tabs__item(v-initial-scroll=tab === 'All')
+										button.tab.tab--default(:class=`getActiveClass('${tab}')` v-on=`tabEvents('${tab}')`)=tab
+						.tab-content
+							br
+							template(v-if="['All', 'Breadcrumbs'].includes(activeTab)")
+								.pv-block
+									h3.pv-block__title Breadcrumbs
+									.pv-block__preview
+										+breadcrumbs(["Главная", "UI"])
+
+							template(v-if="['All', 'Typography'].includes(activeTab)")
+								.pv-block
+									h3.pv-block__title Typography & Animations
+									.pv-block__preview
+										.pv-block__items
+											.pv-block__item(v-animate="{animationClass: 'fadeInUp'}")
+												h3(style="fontFamily: var(--font-family-primary); font-weight: 400; font-Size: var(--font-size-h3); line-height: var(--line-height-m)") Primary Font Family - Helvetica Regular
+
+											.pv-block__item(v-animate="{animationClass: 'fadeInUp'}")
+												h3(style="fontFamily: var(--font-family-primary); font-weight: 500; font-Size: var(--font-size-h3); line-height: var(--line-height-m)") Primary Font Family - Helvetica Medium
+
+										.pv-block__devider
+
+										.pv-block__items(v-animate="{animationClass: 'fadeInUp'}")
+											.pv-block__item
+												h1.title.title--h1 Heading 1
+
+											.pv-block__item
+												h2.title.title--h2 Heading 2
+
+											.pv-block__item
+												h3.title.title--h3 Heading 3
+
+											.pv-block__item
+												h4.title.title--h4 Heading 4
+
+											.pv-block__item
+												h5.title.title--h5 Heading 5
+
+											.pv-block__item
+												h6.title.title--h6 Heading 6
+
+										.pv-block__items.pv-block__items--row(v-animate="{animationClass: 'fadeInUp'}")
+											.pv-block__item
+												p.text Text
+
+											.pv-block__item
+												p.text.text--s Text S
+
+											.pv-block__item
+												p.text.text--xs Text XS
+
+										.pv-block__items.pv-block__items--row(v-animate="{animationClass: 'fadeInUp'}")
+											.pv-block__item
+												p.text.text--medium Text
+
+											.pv-block__item
+												p.text.text--medium.text--s Text S
+
+											.pv-block__item
+												p.text.text--medium.text--xs Text XS
+
+
+							template(v-if="['All', 'Buttons'].includes(activeTab)")
+								.pv-block
+									h3.pv-block__title Buttons
+									.pv-block__preview
+
+										.pv-block__items.pv-block__items--row
+											.pv-block__item
+												button.btn.btn--color-primary
+													+icon('arrow-left').btn__icon
+													span.btn__text color-primary
+													+icon('arrow-right').btn__icon
+
+											.pv-block__item
+												button.btn.btn--color-primary.disabled
+													span.btn__text color-primary disabled
+
+											.pv-block__item
+												button.btn.btn--color-primary(loading="true")
+													span.btn__text color-primary loading
+
+										.pv-block__items.pv-block__items--row
+											.pv-block__item
+												button.btn.btn--color-secondary
+													+icon('arrow-left').btn__icon
+													span.btn__text color-secondary
+													+icon('arrow-right').btn__icon
+
+											.pv-block__item
+												button.btn.btn--color-secondary.disabled
+													span.btn__text color-secondary disabled
+
+											.pv-block__item
+												button.btn.btn--color-secondary(loading="true")
+													span.btn__text color-secondary loading
+
+										.pv-block__items.pv-block__items--row
+											.pv-block__item
+												button.btn.btn--color-tertiary
+													+icon('arrow-left').btn__icon
+													span.btn__text color-tertiary
+													+icon('arrow-right').btn__icon
+
+											.pv-block__item
+												button.btn.btn--color-tertiary.disabled
+													span.btn__text color-tertiary disabled
+
+											.pv-block__item
+												button.btn.btn--color-tertiary(loading="true")
+													span.btn__text color-tertiary loading
+
+										.pv-block__items.pv-block__items--row
+											.pv-block__item
+												button.btn.btn--color-primary.btn--size-small
+													+icon('arrow-left').btn__icon
+													span.btn__text size-small
+													+icon('arrow-right').btn__icon
+
+											.pv-block__item
+												button.btn.btn--color-primary.btn--size-small(disabled)
+													span.btn__text size-small disabled
+
+											.pv-block__item
+												button.btn.btn--color-primary.btn--size-small(loading="true")
+													span.btn__text size-small loading
+
+								.pv-block.pv-block--dark
+									h3.pv-block__title(style="color: #fff;") Buttons dark background
+									.pv-block__preview
+
+										.pv-block__items.pv-block__items--row
+											.pv-block__item
+												button.btn.btn--color-tertiary.btn--inverse
+													+icon('arrow-left').btn__icon
+													span.btn__text color-tertiary-inverse
+													+icon('arrow-right').btn__icon
+
+											.pv-block__item
+												button.btn.btn--color-tertiary.btn--inverse(disabled)
+													span.btn__text color-tertiary-inverse
+
+											.pv-block__item
+												button.btn.btn--color-tertiary.btn--inverse(loading="true")
+													span.btn__text color-tertiary-inverse
+
+										.pv-block__items.pv-block__items--row
+											.pv-block__item
+												button.btn.btn--color-tertiary.btn--inverse.btn--size-small
+													+icon('arrow-left').btn__icon
+													span.btn__text size-small
+													+icon('arrow-right').btn__icon
+
+											.pv-block__item
+												button.btn.btn--color-tertiary.btn--inverse.btn--size-small(disabled)
+													span.btn__text size-small disabled
+
+											.pv-block__item
+												button.btn.btn--color-tertiary.btn--inverse.btn--size-small(loading="true")
+													span.btn__text size-small loading
+
+							template(v-if="['All', 'Links'].includes(activeTab)")
+								.pv-block
+									h3.pv-block__title Links
+									.pv-block__preview
+
+										.pv-block__items
+											.pv-block__item
+												a(href="#").link.link--color-primary Link
+
+											.pv-block__item
+												a(href="#").link.link--color-primary.disabled Link Disabled
+
+											.pv-block__item
+												a(href="#").link.link--color-primary.link--underlined Link Underlined
+
+											.pv-block__item
+												p Some text with a #[a(href="#").link.link--color-primary link] inside
+
+											.pv-block__item
+												p Some text with an #[a(href="#").link.link--color-primary.link--underlined underlined link] inside
+
+											.pv-block__item
+												a(href="#").link.link--color-primary Link with icon
+													+icon('arrow-right').link__icon
+
+											.pv-block__item
+												a(href="#").link.link--color-primary
+													+icon('arrow-left').link__icon
+													| Link with icon
+													+icon('arrow-right').link__icon
+
+							template(v-if="['All', 'Show More'].includes(activeTab)")
+								.pv-block
+									h3.pv-block__title Show More (cut string)
+									.pv-block__preview
+										.toggle-text
+											show-more-template(style="--cut-string-value: 100").toggle-text__content
+												p Вместо класса 'test-text' добавляем свой и в нем управляем переменной cut-string-value
+												template(#trigger="{hasOverflow, isActive, toggleActive}")
+													button.link.link--color-primary(v-if="hasOverflow" @click="toggleActive") Показать еще
+
+										.toggle-text
+											show-more-template().toggle-text__content
+												p Тут будет только кнопка <span style="color: #336699">'Показать еще'</span>. пам-пам.  пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам.
+												template(#trigger="{hasOverflow, isActive, toggleActive}")
+													button.link.link--color-primary(v-if="hasOverflow" @click="toggleActive") Показать еще
+
+										.toggle-text
+											show-more-template().toggle-text__content
+												p Тут будет не только кнопка <span style="color: #336699">'Показать еще'</span>, но и кнопка <span style="color: #336699">'Скрыть'</span>. пам-пам.  пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам.
+												template(#trigger="{hasOverflow, isActive, toggleActive}")
+													button.link.link--color-primary(v-if="hasOverflow" @click="toggleActive") Показать еще
+													button.link.link--color-primary(v-else-if="isActive" @click="toggleActive") Скрыть
+
+								.pv-block
+									h3.pv-block__title Show More (max-height)
+									.pv-block__preview
+
+										.toggle-text
+											show-more-template(mode="block").toggle-text__content
+												p Вместо класса 'test-text' добавляем свой и в нем управляем переменной block-height
+												template(#trigger="{hasOverflow, isActive, toggleActive}")
+													button.link.link--color-primary(v-if="hasOverflow" @click="toggleActive") Показать еще
+
+										.toggle-text
+											show-more-template(mode="block").toggle-text__content
+												p Тут будет только кнопка <span style="color: #336699">'Показать еще'</span>. пам-пам.  пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам.
+												template(#trigger="{hasOverflow, isActive, toggleActive}")
+													button.link.link--color-primary(v-if="hasOverflow" @click="toggleActive") Показать еще
+
+										.toggle-text
+											show-more-template(mode="block").toggle-text__content
+												p Тут будет не только кнопка <span style="color: #336699">'Показать еще'</span>, но и кнопка <span style="color: #336699">'Скрыть'</span>. пам-пам.  пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам.
+												template(#trigger="{hasOverflow, isActive, toggleActive}")
+													button.link.link--color-primary(v-if="hasOverflow" @click="toggleActive") Показать еще
+													button.link.link--color-primary(v-else-if="isActive" @click="toggleActive") Скрыть
+
+							template(v-if="['All', 'Icons'].includes(activeTab)")
+								.pv-block
+									h3.pv-block__title Icon
+									.pv-block__preview
+
+										p Просто иконки (например лайки, просмотры, дата у новости и т.д)
+										.pv-block__items.pv-block__items--row
+											.pv-block__item
+												+icon('arrow-right').icon
+											.pv-block__item
+												+icon('calendar').icon
+											.pv-block__item
+												+icon('clip').icon
+
+							template(v-if="['All', 'Dropdowns'].includes(activeTab)")
+								.pv-block
+									h3.pv-block__title Dropdown
+									.pv-block__preview
+										.pv-block__items.pv-block__items--row
+											dropdown-template(aria-id="dropdown-1")
+												template(#trigger)
+													button.btn AriaId
+
+												p Ну и зачем ты сюда кликнул
+
+											dropdown-template(:delay="2000" placement="top")
+												template(#trigger)
+													button.btn Delay 2s
+
+												p Ну и зачем ты сюда кликнул
+
+											dropdown-template(:delay="{ show: 0, hide: 1000 }" placement="left")
+												template(#trigger)
+													button.btn Show 0s, Hide 1s
+
+												p Ну и зачем ты сюда кликнул
+
+											dropdown-template(shift shift-cross-axis)
+												template(#trigger)
+													button.btn Strategy fixed + shift axis
+
+												p Ну и зачем ты сюда кликнул
+
+											dropdown-template(shift shift-cross-axis strategy='absolute')
+												template(#trigger)
+													button.btn Strategy absolute + shift axis
+
+												p Ну и зачем ты сюда кликнул
+
+											dropdown-template(theme='null' placement="top")
+												template(#trigger)
+													button.btn Theme: null
+
+												p Ну и зачем ты сюда кликнул
+
+											dropdown-template(theme='without-arrow')
+												template(#trigger)
+													button.btn Theme: without-arrow
+
+												p Ну и зачем ты сюда кликнул
+
+											dropdown-template(theme='secondary')
+												template(#trigger)
+													button.btn Theme: secondary
+
+												p Ну и зачем ты сюда кликнул
+
+											dropdown-template()
+												template(#trigger)
+													button.btn With Hide btn
+
+												template(#default="{ hide }")
+													p Ну и зачем ты сюда кликнул
+													button.btn(@click="hide").btn.btn--color-secondary Закрыть
+
+											dropdown-template(positioning-disabled)
+												template(#trigger)
+													button.btn Positioning disabled
+
+												p Ну и зачем ты сюда кликнул
+
+											dropdown-template(:triggers=['hover', 'click'])
+												template(#trigger)
+													button.btn Hover
+
+												p Ну и зачем ты сюда кликнул
+
+											dropdown-template(:triggers=['hover', 'click'] :popper-triggers=['hover'])
+												template(#trigger)
+													button.btn Hover (popper triggers)
+
+												p Ну и зачем ты сюда кликнул
+
+											dropdown-template(placement="top-start")
+												template(#trigger)
+													button.btn Placement Top-Start
+
+												p Ну и зачем ты сюда кликнул
+
+											dropdown-template(placement="top" :skidding="80")
+												template(#trigger)
+													button.btn Placement Top + Skidding 80
+
+												p Ну и зачем ты сюда кликнул
+
+											dropdown-template(placement="top" :distance="80")
+												template(#trigger)
+													button.btn Placement Top + Distance 80
+
+												p Ну и зачем ты сюда кликнул
+
+											dropdown-template()
+												template(#trigger)
+													button.btn Overflow text
+
+												p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer interdum tincidunt molestie. Donec a est pulvinar odio consequat accumsan quis ac lorem. Vivamus quis sagittis diam. Pellentesque laoreet molestie nulla eget finibus.
+
+							template(v-if="['All', 'Tabs'].includes(activeTab)")
+								.pv-block
+									h3.pv-block__title Tabs
+									.pv-block__preview
+										.pv-block__items
+											.pv-block__item
+												h6 Табы ссылки
+												nav.tabs
+													ul.tabs__list
+														each tab in ['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth']
+															li.tabs__item(v-initial-scroll=tab === 'Third')
+																a.tab.tab--default(href=""  class=(tab === 'Third' ? 'active' : ''))=tab
+										.pv-block__items
+											.pv-block__item
+												h6 Обычные табы
+												tabs-template(initial-tab="Fifth" active-class="active" is-hover)
+													template(#default="{ activeTab, getActiveClass, tabEvents }")
+														nav.tabs
+															ul.tabs__list
+																each tab in ['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth']
+																	li.tabs__item(v-initial-scroll=tab === 'Fifth')
+																		button.tab.tab--default(:class=`getActiveClass('${tab}')` v-on=`tabEvents('${tab}')`)=tab
+														.tab-content
+															br
+															template(v-if="activeTab === 'First'")
+																span Таб 1 - Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, aspernatur.
+															template(v-else-if="activeTab === 'Second'")
+																span Таб 2 - Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, aspernatur.
+															template(v-else-if="activeTab === 'Third'")
+																span Таб 3 - Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, aspernatur.
+															template(v-else-if="activeTab === 'Fourth'")
+																span Таб 4 - Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, aspernatur.
+															template(v-else-if="activeTab === 'Fifth'")
+																span Таб 5 - Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, aspernatur.
+															template(v-else-if="activeTab === 'Sixth'")
+																span Таб 6 - Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, aspernatur.
+
+							template(v-if="['All', 'Accordion'].includes(activeTab)")
+								.pv-block
+									h3.pv-block__title Accordion
+									.pv-block__preview
+										.pv-block__items
+											.pv-block__item
+												+base-accordion(
+													[
+														{
+															title: 'Как регулируются в мире конфликты между государствами и какие организации отвечают за их решение?',
+															content: 'Рост населения и экономическое развитие стран оказывают существенное влияние на мировой порядок. С ростом населения возрастает потребление природных ресурсов, что приводит к усилению экологических проблем. Экономическое развитие стран ведет к наращиванию экономической мощности и политического влияния на международной арене. Это может приводить к установлению новых правил игры в мировой экономике, заключению новых торговых, политических и военных союзов, а также изменению баланса сил между государствами. Кроме того, в условиях глобализации и международного общения различные тенденции в развитии экономики и демографии одних стран сильно влияют на другие страны.'
+														},
+													]
+												)(media-until="tablet")
+											.pv-block__item
+												+base-accordion(
+													[
+														{
+															title: 'Как регулируются в мире конфликты между государствами и какие организации отвечают за их решение?',
+															content: 'Рост населения и экономическое развитие стран оказывают существенное влияние на мировой порядок. С ростом населения возрастает потребление природных ресурсов, что приводит к усилению экологических проблем. Экономическое развитие стран ведет к наращиванию экономической мощности и политического влияния на международной арене. Это может приводить к установлению новых правил игры в мировой экономике, заключению новых торговых, политических и военных союзов, а также изменению баланса сил между государствами. Кроме того, в условиях глобализации и международного общения различные тенденции в развитии экономики и демографии одних стран сильно влияют на другие страны.'
+														}
+													]
+												)(theme="secondary")
+											.pv-block__item
+												+base-accordion(
+													[
+														{
+															title: 'Как регулируются в мире конфликты между государствами и какие организации отвечают за их решение?',
+															content: 'Рост населения и экономическое развитие стран оказывают существенное влияние на мировой порядок. С ростом населения возрастает потребление природных ресурсов, что приводит к усилению экологических проблем. Экономическое развитие стран ведет к наращиванию экономической мощности и политического влияния на международной арене. Это может приводить к установлению новых правил игры в мировой экономике, заключению новых торговых, политических и военных союзов, а также изменению баланса сил между государствами. Кроме того, в условиях глобализации и международного общения различные тенденции в развитии экономики и демографии одних стран сильно влияют на другие страны.'
+														}
+													]
+												)(theme="backdrop")
+
+											.pv-block__item
+												+base-accordion(
+													[
+														{
+															title: 'Как регулируются в мире конфликты между государствами и какие организации отвечают за их решение?',
+															content: '<p>Рост населения и экономическое развитие стран оказывают существенное влияние на мировой порядок. С ростом населения возрастает потребление природных ресурсов, что приводит к усилению экологических проблем. Экономическое развитие стран ведет к наращиванию экономической мощности и политического влияния на международной арене. Это может приводить к установлению новых правил игры в мировой экономике, заключению новых торговых, политических и военных союзов, а также изменению баланса сил между государствами. Кроме того, в условиях глобализации и международного общения различные тенденции в развитии экономики и демографии одних стран сильно влияют на другие страны.</p><p>Рост населения и экономическое развитие стран оказывают существенное влияние на мировой порядок. С ростом населения возрастает потребление природных ресурсов, что приводит к усилению экологических проблем. Экономическое развитие стран ведет к наращиванию экономической мощности и политического влияния на международной арене. Это может приводить к установлению новых правил игры в мировой экономике, заключению новых торговых, политических и военных союзов, а также изменению баланса сил между государствами. Кроме того, в условиях глобализации и международного общения различные тенденции в развитии экономики и демографии одних стран сильно влияют на другие страны.</p><p>Рост населения и экономическое развитие стран оказывают существенное влияние на мировой порядок. С ростом населения возрастает потребление природных ресурсов, что приводит к усилению экологических проблем. Экономическое развитие стран ведет к наращиванию экономической мощности и политического влияния на международной арене. Это может приводить к установлению новых правил игры в мировой экономике, заключению новых торговых, политических и военных союзов, а также изменению баланса сил между государствами. Кроме того, в условиях глобализации и международного общения различные тенденции в развитии экономики и демографии одних стран сильно влияют на другие страны.</p><p>Рост населения и экономическое развитие стран оказывают существенное влияние на мировой порядок. С ростом населения возрастает потребление природных ресурсов, что приводит к усилению экологических проблем. Экономическое развитие стран ведет к наращиванию экономической мощности и политического влияния на международной арене. Это может приводить к установлению новых правил игры в мировой экономике, заключению новых торговых, политических и военных союзов, а также изменению баланса сил между государствами. Кроме того, в условиях глобализации и международного общения различные тенденции в развитии экономики и демографии одних стран сильно влияют на другие страны.</p>'
+														}
+													]
+												)(theme="backdrop" pointer-side="ltl")
+
+
+							template(v-if="['All', 'Modals'].includes(activeTab)")
+								.pv-block
+									h3.pv-block__title Modals
+									.pv-block__preview
+										.pv-block__items.pv-block__items--row
+											.pv-block__item
+												button(@click="openModal('modal-callback')").btn.btn--color-primary.btn--size-small Show
+											.pv-block__item
+												button(@click="openModal('modal-form', { text: 'Test data' })").btn.btn--color-primary.btn--size-small Show in Vue component
+
+							template(v-if="['All', 'Gallery'].includes(activeTab)")
+								.pv-block
+									h3.pv-block__title Gallery
+									.pv-block__preview
+										.pv-block__items.pv-block__items--row
+											+image({
+												src: 'img/content/photo.jpg',
+												width: '200',
+												height: '100',
+											}).pv-block__item(@click="openGalleryModal('modal-gallery', 0)")
+											+image({
+												src: 'img/content/photo.jpg',
+												width: '200',
+												height: '100',
+											}).pv-block__item(@click="openGalleryModal('modal-gallery', 1)")
+											+image({
+												src: 'img/content/photo.jpg',
+												width: '200',
+												height: '100',
+											}).pv-block__item(@click="openGalleryModal('modal-gallery', 2)")
+											+image({
+												src: 'img/content/photo.jpg',
+												width: '200',
+												height: '100',
+											}).pv-block__item(@click="openGalleryModal('modal-gallery', 3)")
+											+image({
+												src: 'img/content/photo.jpg',
+												width: '200',
+												height: '100',
+											}).pv-block__item(@click="openGalleryModal('modal-gallery', 4)")
+											+image({
+												src: 'img/content/photo.jpg',
+												width: '200',
+												height: '100',
+											}).pv-block__item(@click="openGalleryModal('modal-gallery', 5)")
+											+image({
+												src: 'img/content/photo.jpg',
+												width: '200',
+												height: '100',
+											}).pv-block__item(@click="openGalleryModal('modal-gallery', 6)")
+
+											-
+												const slides = [
+													{
+														type: 'img',
+														img: {
+															poster: 'https://lipsum.app/id/9/1800x1200',
+															src: 'https://lipsum.app/id/9/1800x1200',
+															width: '1800',
+															height: '1200'
+														},
+														alt: 'alt'
+													},
+													{
+														type: 'iframe',
+														iframe: {
+															poster: '/img/content/photo.jpg',
+															src: 'https://www.youtube.com/embed/dQw4w9WgXcQ?si=sAS5ha6Bwu2EdkZc&autoplay=1'
+														},
+														alt: 'alt'
+													},
+													{
+														type: 'video',
+														video: {
+															poster: '/img/content/photo.jpg',
+															sources: [{
+																src: 'https://html.xpager.ru/swfy7n/img/shop/stories/test-video.mp4',
+																type: 'video/mp4'
+															}]
+														},
+														alt: 'alt'
+													},
+													{
+														type: 'img',
+														img: {
+															poster: '/img/content/photo.jpg',
+															src: '/img/content/photo.jpg'
+														},
+														alt: 'alt'
+													},
+													{
+														type: 'iframe',
+														iframe: {
+															poster: '/img/content/photo.jpg',
+															src: 'https://vk.com/video_ext.php?oid=-44270144&id=456245637&hd=2&autoplay=1'
+														},
+														alt: 'alt'
+													},
+													{
+														type: 'video',
+														video: {
+															poster: '/img/content/photo.jpg',
+															sources: [{
+																src: 'https://html.xpager.ru/swfy7n/img/shop/stories/test-video.mp4',
+																type: 'video/webm'
+															}]
+														},
+														alt: 'alt'
+													},
+													{
+														type: 'iframe',
+														iframe: {
+															poster: '/img/content/photo.jpg',
+															src: 'https://dzen.ru/embed/vCIFMmfuyoQA?from_block=partner&from=zen&mute=0&autoplay=1'
+														},
+														alt: 'alt'
+													},
+												];
+
+											modal-gallery(id='modal-gallery' title="Заголовок" :slides=slides)
+
+							template(v-if="['All', 'Slider'].includes(activeTab)")
+								.pv-block
+									h3.pv-block__title Slider
+									.pv-block__preview
+										.pv-block__items.pv-block__items--row
+											.pv-block__item
+												+content-slider([
+													{
+														img: 'banner',
+														text: 'Подпись к фотографии, которая может состоять из одной или двух строк'
+													},
+													{
+														img: 'banner',
+														text: 'Подпись к фотографии, которая может состоять из одной или двух строк Подпись к фотографии, которая может состоять из одной или двух строк'
+													},
+													{
+														img: 'banner',
+														text: 'Подпись к фотографии, которая может состоять из одной или двух строк'
+													},
+												])
+
+							template(v-if="['All', 'Pagination'].includes(activeTab)")
+								.pv-block
+									h3.pv-block__title Pagination
+									.pv-block__preview
+
+										.pv-block__items
+											.pv-block__item
+												base-pagination(:total="100" :limit="10" :max-buttons="3")
+
+											.pv-block__item
+												base-pagination(:total="100" :limit="10" :max-buttons="3")
+
+											.pv-block__item
+												base-pagination(:total="100" :limit="10" :max-buttons="3")
+
+											.pv-block__item
+												base-pagination(hide-buttons :total="100" :limit="10" :max-buttons="3")
+
+								.pv-block.pv-block--dark
+									h3.pv-block__title Pagination Revert
+									.pv-block__preview
+
+										.pv-block__items
+											.pv-block__item
+												base-pagination(:total="100" :limit="10" :max-buttons="3" theme="light")
+
+											.pv-block__item
+												base-pagination(:total="100" :limit="10" :max-buttons="3" theme="light")
+
+											.pv-block__item
+												base-pagination(:total="100" :limit="10" :max-buttons="3" theme="light")
+
+											.pv-block__item
+												base-pagination(hide-buttons :total="100" :limit="10" :max-buttons="3" theme="light")
+
+							template(v-if="['All', 'Video'].includes(activeTab)")
+								.pv-block
+									h3.pv-block__title Video
+									.pv-block__preview
+										base-video.pv-block__video
+											template(#default="{canPlayHandler, errorHandler}")
+												video(poster=`https://images.unsplash.com/photo-1682687982134-2ac563b2228b?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D` loop preload="metadata" @loadedmetadata="canPlayHandler" @error="errorHandler").video__video.img__image
+													source(src="https://www.shutterstock.com/shutterstock/videos/1075356548/preview/stock-footage-ice-hockey-rink-arena-professional-forward-player-breaks-defense-hitting-puck-with-stick-scores.mp4" type="video/mp4")
+													source(src="https://www.shutterstock.com/shutterstock/videos/1075356548/preview/stock-footage-ice-hockey-rink-arena-professional-forward-player-breaks-defense-hitting-puck-with-stick-scores.webm" type="video/webm")
+
+							template(v-if="['All', 'Forms'].includes(activeTab)")
+								.pv-block
+									h3.pv-block__title Forms
+									.pv-block__preview
+										form-feedback(:cities="[]")
+								//.pv-block
+								//	h3.pv-block__title External Results
+								//	.pv-block__preview
+								//		form-external-results
+							template(v-if="['All', 'Show more'].includes(activeTab)")
+								.pv-block
+									h3.pv-block__title Show More (cut string)
+									.pv-block__preview
+										.toggle-text
+											show-more-template(style="--cut-string-value: 100").toggle-text__content
+												p Вместо класса 'test-text' добавляем свой и в нем управляем переменной cut-string-value
+												template(#trigger="{hasOverflow, isActive, toggleActive}")
+													button.link.link--color-primary(v-if="hasOverflow" @click="toggleActive") Показать еще
+
+										.toggle-text
+											show-more-template().toggle-text__content
+												p Тут будет только кнопка <span style="color: #336699">'Показать еще'</span>. пам-пам.  пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам.
+												template(#trigger="{hasOverflow, isActive, toggleActive}")
+													button.link.link--color-primary(v-if="hasOverflow" @click="toggleActive") Показать еще
+
+										.toggle-text
+											show-more-template().toggle-text__content
+												p Тут будет не только кнопка <span style="color: #336699">'Показать еще'</span>, но и кнопка <span style="color: #336699">'Скрыть'</span>. пам-пам.  пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам.
+												template(#trigger="{hasOverflow, isActive, toggleActive}")
+													button.link.link--color-primary(v-if="hasOverflow" @click="toggleActive") Показать еще
+													button.link.link--color-primary(v-else-if="isActive" @click="toggleActive") Скрыть
+
+
+
+								.pv-block
+									h3.pv-block__title Show More (max-height)
+									.pv-block__preview
+
+										.toggle-text
+											show-more-template(mode="block").toggle-text__content
+												p Вместо класса 'test-text' добавляем свой и в нем управляем переменной block-height
+												template(#trigger="{hasOverflow, isActive, toggleActive}")
+													button.link.link--color-primary(v-if="hasOverflow" @click="toggleActive") Показать еще
+
+										.toggle-text
+											show-more-template(mode="block").toggle-text__content
+												p Тут будет только кнопка <span style="color: #336699">'Показать еще'</span>. пам-пам.  пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам.
+												template(#trigger="{hasOverflow, isActive, toggleActive}")
+													button.link.link--color-primary(v-if="hasOverflow" @click="toggleActive") Показать еще
+
+										.toggle-text
+											show-more-template(mode="block").toggle-text__content
+												p Тут будет не только кнопка <span style="color: #336699">'Показать еще'</span>, но и кнопка <span style="color: #336699">'Скрыть'</span>. пам-пам.  пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам. пам-пам.
+												template(#trigger="{hasOverflow, isActive, toggleActive}")
+													button.link.link--color-primary(v-if="hasOverflow" @click="toggleActive") Показать еще
+													button.link.link--color-primary(v-else-if="isActive" @click="toggleActive") Скрыть
+
+							ui-preview(:tab="activeTab")

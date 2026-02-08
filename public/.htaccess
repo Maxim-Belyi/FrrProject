@@ -1,0 +1,89 @@
+Options -Indexes
+ErrorDocument 404 /404.php
+
+<IfModule mod_php5.c>
+  php_flag session.use_trans_sid off
+  #php_flag default_charset UTF-8
+  #php_value display_errors 1
+</IfModule>
+
+<IfModule mod_php7.c>
+  php_flag session.use_trans_sid off
+  #php_flag default_charset UTF-8
+  #php_value display_errors 1
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  Options +FollowSymLinks
+  RewriteEngine On
+
+  #### Тянуть контент с прода при локальной разработке. ЗАМЕНИТЬ ДОМЕН!####
+  #RewriteCond %{ENV:ENVIRONMENT} ^dl$
+  #RewriteCond %{REQUEST_FILENAME} !-f
+  #RewriteCond %{REQUEST_URI} \.(gif|jpe?g|png|ico|svg|webp|JPE?G|pdf|png|webm)$
+  #RewriteRule ^(.*)$ https://template.xpager.ru/$1 [R,NC,L]
+
+  # новые правила для роутинга
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteRule ^(.*)$ /bitrix/routing_index.php [L]
+
+
+  #блокировка поисковиов для поддоменов xpager.ru и xpage.dev
+  RewriteCond %{HTTP_HOST} ^(.*\.)?(xpager\.ru|xpage\.dev)$ [NC]
+  RewriteCond %{HTTP_USER_AGENT} (googlebot|bingbot|msnbot|yandexbot|baiduspider|duckduckbot|sogou|exabot|facebot|twitterbot|linkedinbot|applebot|ahrefsbot|semrushbot|mj12bot|dotbot|petalbot|ia_archiver|seznambot|gigabot|rogerbot|qwantify) [NC]
+  RewriteRule .* - [F,L]
+
+  # Блокировка попытки XSS-атаки
+  RewriteCond %{REQUEST_URI} (<|%3C)([^s]*s)+cript.*(>|%3E) [NC]
+  RewriteRule ^(.*)$ - [F]
+
+  # Запрет любых запросов кроме GET,PROPFIND,POST,OPTIONS,PUT,HEAD,DELETE
+  RewriteCond %{REQUEST_METHOD} !^(GET|HEAD|POST|PROPFIND|OPTIONS|PUT|DELETE)$ [NC]
+  RewriteRule .* - [F,NS,L]
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !/bitrix/urlrewrite.php$
+  RewriteRule ^(.*)$ /bitrix/urlrewrite.php [L]
+  RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization}]
+</IfModule>
+
+<IfModule mod_dir.c>
+  DirectoryIndex index.php index.html
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive on
+  ExpiresByType image/jpeg "access plus 3 day"
+  ExpiresByType image/gif "access plus 3 day"
+  ExpiresByType image/png "access plus 3 day"
+  ExpiresByType text/css "access plus 3 day"
+  ExpiresByType application/javascript "access plus 3 day"
+</IfModule>
+
+Options -Indexes
+ErrorDocument 404 /404.php
+
+<IfModule mod_rewrite.c>
+  Options +FollowSymLinks
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !/bitrix/urlrewrite.php$
+  RewriteRule ^(.*)$ /bitrix/urlrewrite.php [L]
+  RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization}]
+</IfModule>
+
+<IfModule mod_dir.c>
+  DirectoryIndex index.php index.html
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive on
+  ExpiresByType image/jpeg "access plus 3 day"
+  ExpiresByType image/gif "access plus 3 day"
+</IfModule>

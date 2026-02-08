@@ -1,0 +1,17 @@
+extends /base/_head
+block vars
+	- let title = 'Главная'
+	- let layoutClass = 'layout'
+	- let bodyClass = null
+
+block content
+	+header({ class: 'header--transparent' })(v-toggle-header)
+
+	main.page__main
+		include ../templates/main/hero-section
+
+		include ../templates/main/main-about
+
+		include ../templates/main/main-news
+
+	include ../templates/shared/footer

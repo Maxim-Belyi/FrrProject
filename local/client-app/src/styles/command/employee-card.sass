@@ -1,0 +1,63 @@
+.employee-card
+	position: relative
+	display: flex
+	flex-direction: column
+	height: 100%
+	border-right: 1px solid var(--default-border)
+
+	@include media('min', 'laptop-xl')
+		&:nth-child(6n - 5)
+			border-left: 1px solid var(--default-border)
+
+	@include media('max', 'laptop-xl')
+		&:nth-child(4n - 3)
+			border-left: 1px solid var(--default-border)
+
+	@include media('max', 'tablet')
+		&:nth-child(3n - 2)
+			border-left: 1px solid var(--default-border)
+
+	@include media('max', 'mobile-xl')
+		&:nth-child(2n - 1)
+			border-right: 0
+			border-left: 0
+
+	&__preview
+		display: flex
+		align-items: center
+		justify-content: center
+		aspect-ratio: 320 / 360
+		border-bottom: 1px solid var(--default-border)
+		background-color: var(--color-neutral-100)
+
+		@include media('max', 'mobile-xl')
+			aspect-ratio: auto
+
+	&__image
+		--width: 100%
+		--object-fit: cover
+		--aspect-ratio: 320 / 359
+		height: 100%
+		max-height: 360px
+
+		@include media('max', 'mobile-xl')
+			max-height: 205px
+
+	&__plug
+		--width: 76px
+		--object-fit: contain
+		--aspect-ratio: 76 / 36
+
+	&__desc
+		display: flex
+		flex-direction: column
+		flex-grow: 1
+		gap: var(--gap-xs)
+		padding: var(--padding-xl)
+		border-bottom: 1px solid var(--default-border)
+
+	&__caption
+		color: var(--color-neutral-500)
+
+		@include media('max', 'mobile-xl')
+			--text-font-size: var(--font-size-text-s)

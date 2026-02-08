@@ -1,0 +1,26 @@
+extends /base/_head
+block vars
+	- let title = 'О мастер-плане'
+	- let layoutClass = 'layout'
+	- let bodyClass = null
+
+block content
+	+header({})
+
+	main.page__main
+		+page-header({title: 'О мастер-плане', breadcrumbs: ['Главная', 'Проекты', 'О мастер-плане']})
+			+slot('actions')
+				nav.tabs
+					ul.tabs__list
+						li.tabs__item
+							a(href="#").tab.tab--default.active О мастер-плане
+						li.tabs__item
+							a(href="#").tab.tab--default Об опорных населенных пунктах
+
+		include ../templates/projects/master-plan
+
+		include ../templates/projects/partners
+
+		include ../templates/projects/detailed
+
+	include ../templates/shared/footer

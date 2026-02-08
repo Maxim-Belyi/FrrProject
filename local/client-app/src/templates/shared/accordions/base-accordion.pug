@@ -1,0 +1,9 @@
+mixin base-accordion(items = [])
+	each item in items
+		accordion-template&attributes(attributes).accordion
+			template(#default="{onToggle, isOpen}")
+				.accordion__header(@click="onToggle")
+					span.title.title--h5!=item.title
+					icon-s-v-g(:name="isOpen ? 'chevron-up' : 'chevron-down'").accordion__header-icon
+			template(#body)
+				.accordion__body!=item.content

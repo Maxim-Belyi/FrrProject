@@ -1,0 +1,43 @@
+.modal-gallery
+	&.modal-enter-from, &.modal-leave-to
+		& .modal-window
+			&__body
+				transform: unset
+
+	&__modal
+		display: flex
+		flex-direction: column
+		gap: var(--gap-l)
+		width: 100%
+		height: 100%
+
+	&__content
+		display: flex
+		flex-direction: column
+		height: 100%
+
+	&__slider
+		height: 100%
+
+	.modal-window
+		&__body
+			padding: var(--padding-xl)
+			overflow-x: hidden
+			background-color: var(--color-neutral-200)
+
+			@include v-scroll
+
+	.modal
+		&__wrapper
+			gap: 120px
+
+		&__close
+			position: absolute
+			top: var(--padding-xl)
+			right: var(--padding-xl)
+			z-index: var(--z-index-above)
+			size: 24px
+
+			&-icon
+				size: 100%
+				color: var(--color-neutral-500)

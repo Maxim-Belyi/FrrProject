@@ -1,0 +1,18 @@
+mixin socials(data, list=[])
+	.socials&attributes(attributes)
+		if data.title
+			span.socials__title!=data.title
+
+		.socials__list
+			each item, i in list
+				a.socials__item.btn.btn--color-tertiary.btn--inverse(href="#" target="_blank")
+					+image(
+						{
+							src: item,
+							width: '20',
+							height: '20',
+						},
+					).socials__item-icon
+
+		if data.disclaimer
+			span.socials__disclaimer!=data.disclaimer

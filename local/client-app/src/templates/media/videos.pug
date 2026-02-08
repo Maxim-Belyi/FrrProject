@@ -1,0 +1,38 @@
+-
+	const videos = [
+		{
+			title: 'Новая инициатива по улучшению инфраструктуры Бурятии',
+			text: 'Фонд регионального развития запускает проект по модернизации общественных пространств.',
+			img: 'img/content/media/news-1.webp',
+			video: true,
+		},
+		{
+			title: 'Новая программа по улучшению жилищных условий в Бурятии',
+			text: 'Фонд регионального развития запускает инициативу по обеспечению доступным жильем для жителей Бурятии.',
+			img: 'img/content/media/news-2.webp',
+			video: true,
+		},
+		{
+			title: 'Запуск программы по благоустройству городов Бурятии',
+			text: 'Фонд регионального развития объявляет о новой программе, ',
+			img: '',
+			video: true,
+		},
+		{
+			title: 'Новая инициатива по улучшению инфраструктуры Бурятии',
+			text: 'Фонд регионального развития запускает проект по модернизации общественных пространств.',
+			img: 'img/content/media/news-4.webp',
+			video: true,
+		},
+	]
+
+section.page__section.section.news
+	.wrapper
+		.section__inner
+			.news__content
+				.news__list
+					- for (let i = 0; i < 3; i++)
+						each item in videos
+							+news-card(item)(@click=`openModal('modal-video', { title: 'Заголовок видео в одну или несколько строк', poster: '${BASE_URL}img/content/media/news-3.webp', source: [{ src: 'https://www.shutterstock.com/shutterstock/videos/1075356548/preview/stock-foobadgee-ice-hockey-rink-arena-professional-forward-player-breaks-defense-hitting-puck-with-stick-scores.mp4', type: 'video/mp4' },{ src: 'https://www.shutterstock.com/shutterstock/videos/1075356548/preview/stock-foobadgee-ice-hockey-rink-arena-professional-forward-player-breaks-defense-hitting-puck-with-stick-scores.webm', type: 'video/webm' }] })`)
+
+				+pagination-block.news__pagination

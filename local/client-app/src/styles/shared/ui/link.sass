@@ -1,0 +1,106 @@
+.link
+	--link-gap: var(--gap-xs)
+	// Typography
+	--link-font-family: var(--font-family-primary)
+	--link-font-size: var(--font-size-text-m)
+	--link-line-height: 20px
+	--link-font-weight: 500
+	--link-text-transform: none
+	--link-letter-spacing: var(--letter-spacing-s)
+	// Color
+	--link-color: var(--color-neutral-900)
+	--link-color-hover: var(--color-primary-600)
+	--link-color-focus: var(--color-primary-500)
+	--link-color-active: var(--color-primary-500)
+	--link-color-disabled: var(--color-neutral-300)
+	// Border
+	--link-border-color: transparent
+	--link-border-color-hover: transparent
+	--link-border-color-active: transparent
+	// -------------------------
+	--link-icon-size: 20px
+
+	display: inline-flex
+	align-items: center
+	gap: var(--link-gap)
+
+	min-height: calc(var(--link-font-size) * var(--link-line-height))
+	padding: 0
+
+	border: none
+
+	background-color: transparent
+
+	color: var(--link-color)
+
+	font-family: var(--link-font-family)
+	font-size: var(--link-font-size)
+	font-weight: var(--link-font-weight)
+	letter-spacing: var(--link-letter-spacing)
+	line-height: var(--link-line-height)
+
+	text-decoration: none
+	text-transform: var(--link-text-transform)
+
+	transition: color 0.3s ease
+
+	cursor: pointer
+
+	&:focus
+		outline: none
+
+	&--underlined,
+	&:focus-visible
+		text-decoration: underline
+		text-decoration-color: var(--link-color-hover)
+		text-decoration-thickness: 2px
+		text-underline-offset: 4px
+
+	@include hover
+		border-color: var(--link-border-color-hover)
+		color: var(--link-color-hover)
+
+	&.active,
+	&:active
+		border-color: var(--link-border-color-active)
+		color: var(--link-color-active)
+
+	&:disabled,
+	&.disabled,
+	&.swiper-button-disabled
+		border-color: var(--link-border-color-disabled)
+		color: var(--link-color-disabled)
+		cursor: not-allowed
+		pointer-events: none
+
+		&:focus-visible
+			text-decoration: none
+
+	&__icon
+		display: block
+		flex: none
+		size: var(--link-icon-size)
+		color: currentcolor
+
+	&--size
+		&-small
+			--link-font-size: var(--font-size-text-s)
+			--link-font-weight: 500
+			--link-icon-size: 16px
+			--link-gap: var(--gap-xxs)
+
+		&-big
+			--link-font-size: var(--font-size-text-l)
+			--link-font-weight: 500
+			--link-icon-size: 24px
+
+	&--color
+		&-primary
+			--link-color: var(--color-primary-500)
+
+		&-white
+			--link-color: var(--color-neutral-900)
+
+		&-gray
+			--link-color: var(--color-neutral-500)
+			--link-color-hover: var(--color-neutral-900)

@@ -1,0 +1,36 @@
+.page-header
+	margin-top: var(--header-height)
+	padding: var(--gap-3xl) 0
+
+	@include dotted-grid('gray', 'vertical')
+
+	&__inner
+		display: grid
+		grid-template-columns: repeat(2, minmax(0, 1fr))
+		gap: var(--gap-l) var(--gap-xs)
+
+		@include media('max', 'tablet-xl')
+			grid-template-columns: 100%
+
+	&__top
+		display: flex
+		flex-direction: column
+		gap: var(--gap-l)
+
+	&__actions
+		display: flex
+		align-items: center
+		justify-content: space-between
+		gap: var(--gap-s)
+
+		@include media('max', 'mobile-xl')
+			flex-direction: column
+			align-items: flex-start
+
+	&__content
+		display: flex
+
+		grid-column: 2
+
+		@include media('max', 'tablet-xl')
+			grid-column: auto

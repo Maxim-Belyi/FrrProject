@@ -1,0 +1,34 @@
+section.page__section.section.hero-section
+	.hero-section__bg
+		video(autoplay muted loop).hero-section__bg-video
+			source(src=`${BASE_URL}img/content/main/banner-video.webm` type="video/webm")
+		.hero-section__bg-grid
+	.wrapper
+		.hero-section__wrapper
+			.hero-section__title.title.title--h1 Реализуя инвестиционные #[br] проекты, мы делаем мир #[br] лучше и даем уверенность #[br] в будущем!
+
+			.hero-section__bottom
+				button.hero-section__btn.btn.btn--color-tertiary.btn--inverse(@click=`openModal('modal-video', { title: 'Заголовок видео в одну или несколько строк', poster: '${BASE_URL}img/content/media/news-3.webp', source: [{ src: 'https://www.shutterstock.com/shutterstock/videos/1075356548/preview/stock-foobadgee-ice-hockey-rink-arena-professional-forward-player-breaks-defense-hitting-puck-with-stick-scores.mp4', type: 'video/mp4' },{ src: 'https://www.shutterstock.com/shutterstock/videos/1075356548/preview/stock-foobadgee-ice-hockey-rink-arena-professional-forward-player-breaks-defense-hitting-puck-with-stick-scores.webm', type: 'video/webm' }] })`)
+					span.btn__text Смотреть видео
+					+icon('play').btn__icon
+
+
+				hero-slider.hero-section__slider
+					-for(let i = 0; i < 8; i ++)
+						.swiper-slide
+							article.hero-slider__slide
+								+image(
+									{
+										src: 'img/content/main/news-1.webp',
+										width: '264',
+										height: '176'
+									}
+								).hero-slider__slide-img
+
+								.hero-slider__slide-info
+									.hero-slider__slide-title.title.title--h5(title="Нацпроект \"Жилье и городская среда\"") Нацпроект "Жилье и городская среда"
+									a(href='#').hero-slider__slide-btn.btn.btn--color-secondary
+										span.btn__text Подробнее
+										+icon('arrow-right-up').btn__icon
+
+								.hero-slider__slide-progress

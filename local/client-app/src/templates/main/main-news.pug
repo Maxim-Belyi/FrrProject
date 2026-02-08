@@ -1,0 +1,35 @@
+section.page__section.section.main-news(id="news-slider")
+	.wrapper
+		.section__inner
+			.section__header
+				.section__title-block
+					.section__title.title.title--h2 Новости
+					a(href="#").section__link.link.link--color-primary
+						| Все новости
+						+icon('arrow-right-up').link__icon
+
+				.section__controls.swiper-buttons
+					button.swiper-button.swiper-button-prev.btn.btn--color-secondary
+					button.swiper-button.swiper-button-next.btn.btn--color-secondary
+
+			.section__content
+				section-slider(id="news-slider" :space-between="0" :breakpoints="{ 1: { slidesPerView: 1.3 }, 481: { slidesPerView: 2.3 }, 1280: { slidesPerView: 3 } }").main-news__slider
+					-for (let i = 0; i < 2; i++)
+						.swiper-slide
+							+news-card(
+								{
+									title: 'Новая инициатива по улучшению инфраструктуры Бурятии Новая инициатива по улучшению инфраструктуры Бурятии',
+									text: 'Фонд регионального развития запускает проект по модернизации общественных пространств. Фонд регионального развития запускает проект по модернизации общественных пространств.',
+									img: 'img/content/main/news-2.webp',
+									link: true
+								}
+							)
+						.swiper-slide
+							+news-card(
+								{
+									title: 'Новая инициатива',
+									text: 'Фонд регионального развития запускает',
+									img: 'img/content/main/news-2.webp',
+									link: true
+								}
+							)

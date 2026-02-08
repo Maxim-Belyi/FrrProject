@@ -1,0 +1,32 @@
+//- banner
+tr
+	td.banner__wrap(align="center")
+		table.banner(border="0" cellspacing="0" cellpadding="0" role="presentation")
+			tr
+				td.banner__main-td(style="text-align: center;")
+					//[if (gte mso 9)|(IE)]>
+						<table align="center" border="0" cellspacing="0" cellpadding="0" role="presentation">
+						<tr>
+						<td>
+					//<![endif]
+					table.banner__elem(border="0" cellspacing="0" cellpadding="0" role="presentation")
+						tbody.width-100
+							tr.width-100
+								td.banner__elem-td
+									img.banner__elem-img(src=`${BASE_URL}img/email/img-plug.png` alt="" border="0" width="100%")
+					//[if (gte mso 9)|(IE)]>
+						</td><td>
+					//<![endif]
+					table.banner__elem(border="0" cellspacing="0" cellpadding="0" role="presentation")
+						tbody.width-100
+							tr.width-100
+								td.banner__elem-td
+									h2.banner__title Заголовок баннера
+									p.banner__text Текст описания. У пользователя может быть применена темная тема, тогда цвет шрифта будет инвертирован устройством, а цвет баннера (если он картинкой) останется прежним.
+									a.btn(href="https://html.xpager.ru/email-template/" target="_blank")
+										font Кнопка
+					//[if (gte mso 9)|(IE)]>
+						</td>
+						</tr>
+						/table>
+					///<![endif]

@@ -1,0 +1,92 @@
+@import 'vue-toastification/dist/index.css'
+
+.toast-container
+	right: 0
+	bottom: 0 !important
+	left: unset !important
+	display: flex
+	align-items: flex-end
+	gap: 10px
+	padding: var(--wrapper-padding)
+
+.toast
+	width: 100%
+	min-width: unset
+	max-width: 350px
+	margin-right: unset !important
+	margin-bottom: 0
+	margin-left: auto
+	padding: 24px
+
+	border-radius: var(--radius-m) !important
+
+	background-color: var(--color-neutral-200)
+
+	&__body
+		display: flex
+		align-items: center
+		gap: 28px
+		color: var(--color-neutral-600)
+		font-size: var(--font-size-text-l)
+		font-weight: 600
+		line-height: var(--line-height-xl)
+
+	&__close
+		align-self: center
+
+		size: 20px
+		margin-left: var(--gap-m)
+
+		background-color: var(--color-neutral-900)
+		mask-position: center
+		mask-repeat: no-repeat
+		opacity: 1
+
+		font-size: 0
+
+		@include icon('close')
+
+	&__icon
+		position: relative
+		display: flex
+		align-items: center
+		justify-content: center
+		size: 40px
+		margin-right: var(--gap-m)
+		padding: 8px
+
+		&--success
+			@include icon('success', 'background')
+
+		&--warning
+			background-color: var(--color-warning-light)
+
+			@include icon('warning', 'background')
+
+		&--error
+			background-color: var(--color-negative-light)
+
+			@include icon('error', 'background')
+
+		&--info
+			background-color: var(--color-info-light)
+
+			@include icon('info', 'background')
+
+	&--success,
+	&--warning,
+	&--error,
+	&--info
+		background-color: var(--color-neutral-200)
+
+	&--success
+		color: var(--color-positive)
+
+	&--warning
+		color: var(--color-warning)
+
+	&--error
+		color: var(--color-negative)
+
+	&--info
+		color: var(--color-info)

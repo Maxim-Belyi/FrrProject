@@ -1,0 +1,17 @@
+.map-view
+	@include media('max', 'laptop')
+		padding-top: var(--padding-xl)
+		border-top: 1px solid var(--default-border)
+		background-color: var(--body-bg)
+
+	&__wrapper
+		display: grid
+		grid-template-columns: 320px minmax(0, 1600px)
+
+		@include media('min', 'laptop')
+			@include out-wrapper-full
+
+		@include media('max', 'laptop')
+			display: flex
+			flex-direction: column-reverse
+			gap: var(--gap-3xl)

@@ -1,0 +1,156 @@
+# Папки ядра Bitrix
+/bitrix
+!/public/bitrix/.settings_extra.php
+/upload/
+
+# Временные файлы PHP
+~*.php
+
+# SQL файлы
+*.sql
+/*.sql
+
+# Системные файлы операционных систем
+.DS_Store
+._.DS_Store
+Thumbs.db
+ehthumbs.db
+.Spotlight-V100
+.Trashes
+
+# Системные папки и файлы хостингов
+/cgi-bin/
+/awstats/
+/webstat/
+
+# IDE и редакторы
+/.idea
+/.vscode/
+
+# Docker и контейнеры
+/.docker
+/.ddev
+
+# Системные конфигурационные файлы
+/.bash*
+/.config/
+/.nvm/
+/.pki/
+/.ssh/
+/.composer
+/.env
+
+# Системы контроля версий
+.hg
+.ftpconfig
+
+# Node.js и npm
+/.npm
+/node_modules
+/package-lock.json
+node_modules/
+
+# Composer
+/composer.lock
+/vendor
+
+# Собранные скрипты и зависимости
+dist*/
+/public/dist
+
+# Папка с тестовыми скриптами
+test*/
+
+# Логи
+*.log
+/logs/
+
+# Core dumps
+core.*
+
+# Grunt
+.grunt
+
+# Архивы
+*.zip
+*.tar
+*.tar.gz
+*.enc
+*.gz
+*.tgz
+*.rar
+
+# Документы Office
+*.rtf
+*.ppt
+*.pptx
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.pdf
+
+# Графические редакторы
+*.psd
+*.psb
+*.sketch
+
+# Изображения (игнорируются везде, кроме исключений)
+*.png
+*.jpg
+*.jpeg
+*.jp*g
+*.JPG
+*.JPEG
+*.gif
+*.tiff
+
+# Видео файлы
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.flv
+*.swf
+
+# Текстовые файлы
+*.txt
+
+# Исключения: статические файлы в local/ должны синхронизироваться
+!local/**/*.xls
+!local/**/*.xlsx
+!local/**/*.doc
+!local/**/*.docx
+!local/**/*.jpg
+!local/**/*.jpeg
+!local/**/*.jp*g
+!local/**/*.JPG
+!local/**/*.JPEG
+!local/**/*.png
+!local/**/*.pdf
+!local/**/*.tiff
+!local/**/*.txt
+!local/**/*.mp4
+
+# Исключения: файлы в client-app не должны игнорироваться
+!client-app/**/*.png
+!client-app/**/*.jpg
+!client-app/**/*.jpeg
+!client-app/**/*.gif
+!client-app/**/*.svg
+!client-app/**/*.webp
+
+# Собранный фронтенд
+/public/local/frontend-build
+/public/local/frontend-build/
+/local/frontend-build/
+
+# Sitemap
+sitemap*.xml
+/public/sitemap*
+
+# Временные файлы
+/tmp
+
+# Специфичные файлы проекта
+sef_urls.json

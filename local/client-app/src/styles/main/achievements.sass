@@ -1,0 +1,24 @@
+.achievements
+	display: grid
+	grid-auto-rows: max-content
+	grid-template-columns: repeat(3, minmax(0, 1fr))
+	column-gap: var(--gap-xs)
+	row-gap: var(--gap-3xl)
+
+	@include media('max', 'tablet')
+		display: flex
+		flex-direction: column
+		gap: var(--gap-xxl)
+
+	&__item
+		display: flex
+		flex-direction: column
+		gap: var(--gap-m)
+		color: var(--color-neutral-500)
+
+		&:first-child
+			.achievements__value
+				color: var(--color-primary-500)
+
+		&--full
+			grid-column: 1 / -1

@@ -1,0 +1,75 @@
+
+.taskmgr__control_panel {
+  margin-bottom: 20px;
+}
+.taskmgr table {
+	
+}
+.taskmgr table th,
+.taskmgr table td {
+  padding: 4px 15px;
+  vertical-align: middle;
+}
+.taskmgr table td table td{
+	padding: 7px 15px;
+  vertical-align: middle;
+	}
+.taskmgr table > thead {
+  background-color: #6C7A89;
+  color: #fff;
+}
+
+.taskmgr > table{
+	border-collapse: separate;
+	border-spacing: 0 10px;
+	}
+
+.taskmgr table > thead th {
+  vertical-align: middle;
+}
+.taskmgr table > tbody > tr:hover{
+	/* background: #E4F1FE; */
+}
+.taskmgr table > tbody > tr{
+	padding: 5px 0;
+	}
+.taskmgr table tr:nth-child(even) {
+  background-color: #f5f6f7;
+}
+.taskmgr table td tr:nth-child(even) {
+  background-color: #d5d9dc;
+}
+.taskmgr table td tr {
+  border-bottom: none;
+}
+.taskmgr table tr.error td.status {
+  color: #fff;
+  font-weight: bold;
+  background-color: #F22613;
+}
+
+.taskmgr table tr.success td.status {
+  color: #212121;
+  font-weight: bold;
+  background-color: #87D37C;
+}
+
+.taskmgr table tr.process td.status {
+  color: #212121;
+  font-weight: bold;
+  background-color: #F39C12;
+}
+
+
+.header_top_line, .bl_h_menu, .bl_h_basket{
+	display: none;
+	}
+.taskmgr *{
+	font-family: 'Roboto';
+	}
+.page_taskmgr .center{
+	margin: 0;
+	}
+.page_taskmgr footer{
+	display: none;
+	}

@@ -1,0 +1,49 @@
+extends /base/_head
+block vars
+	- let title = 'Типовая страница'
+	- let layoutClass = 'layout'
+	- let bodyClass = null
+
+block content
+	+header({})
+
+	main.page__main
+		+page-header({title: 'Заголовок страницы', breadcrumbs: ['Главная', 'Медиа', 'Заголовок страницы'], backward: 'назад'})
+			+slot('actions')
+				button.link.link--color-primary Поделиться
+
+			+slot('content')
+				| Тут может быть блок с текстом или фильтры, например
+
+		//Пример как обычно строим страницы с использованием секций
+		include ../templates/content/standard-block
+
+		section.page__section.section.section-slider(id="section-slider")
+			.wrapper
+				.section__inner
+					.section__header
+						h2.section__title.title.title--h2 Заголовок секции
+
+						.section__btns
+							a(href="#").btn.btn--color-secondary
+								span.btn__text какая-то кнопка
+
+						.section__controls.swiper-buttons
+							.swiper-button.swiper-button-prev
+							.swiper-button.swiper-button-next
+
+					.section__content
+						section-slider(id="section-slider" :breakpoints="{ 1: { slidesPerView: 1.05, spaceBetween: 10 }, 481: { slidesPerView: 2, spaceBetween: 10 }, 1280: { slidesPerView: 3, spaceBetween: 20 } }" :space-between="20" :loop="true").section-slider__slider
+							-for (let i = 0; i < 9; i++)
+								.swiper-slide(style="background-color: var(--color-primary-300)")
+									+image(
+										{
+											src: 'img/content/photo.jpg',
+											width: '270',
+											height: '152'
+										}
+									)
+
+					+pagination-block.section__pagination
+
+	include ../templates/shared/footer

@@ -1,0 +1,33 @@
+.accordion
+	border-bottom: 1px solid var(--default-border)
+	transition: background-color 0.3s
+
+	&:not(:first-child)
+		border-top: none
+
+	&.active
+		& .accordion
+			&__header
+				color: var(--color-primary-500)
+
+				&-icon
+					color: var(--color-neutral-900)
+
+	&__header
+		display: flex
+		align-items: center
+		gap: 40px
+		padding: var(--padding-xl)
+		transition: color 0.3s
+		cursor: pointer
+
+		&-icon
+			flex-shrink: 0
+			width: 24px
+			height: 24px
+			margin-left: auto
+			color: var(--color-neutral-500)
+			transition: color 0.3s
+
+	&__body
+		padding: var(--gap-s) var(--padding-xl) var(--padding-xl)

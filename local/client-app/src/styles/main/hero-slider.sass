@@ -1,0 +1,126 @@
+.hero-slider
+	display: flex
+	width: 100%
+	max-width: 759px
+	margin: 0
+	background-color: var(--color-neutral-200)
+
+	@include media('max', 'tablet')
+		flex-direction: column
+		max-width: 100%
+		margin-top: auto
+
+	&__info
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+		order: -1
+
+		width: 120px
+
+		padding: var(--padding-xl)
+
+		border-right: 1px solid var(--default-border)
+		background-color: var(--color-neutral-200)
+
+		@include media('max', 'tablet')
+			flex-direction: row
+			width: 100%
+			border-right: 0
+			border-bottom: 1px solid var(--default-border)
+
+	&__pagination
+		display: grid
+		grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr)
+		gap: var(--gap-xs)
+		color: var(--color-neutral-500)
+		font-weight: 500
+
+	&__current
+		color: var(--color-primary-500)
+
+	&__total
+		text-align: right
+
+	&__title
+		color: var(--color-neutral-500)
+
+	&__slide
+		display: grid
+		grid-template-columns: repeat(2, minmax(0, 1fr))
+		gap: var(--gap-xl)
+		width: 100%
+		height: 100%
+		padding: var(--padding-xl)
+
+		&-img
+			--width: 264px
+			--aspect-ratio: 264 / 176
+			--object-fit: cover
+
+		&-info
+			display: flex
+			flex-direction: column
+			align-items: flex-start
+			gap: var(--gap-xs)
+			height: 100%
+
+		&-title
+			@include cut-string(5)
+
+		&-btn
+			margin-top: auto
+
+		&-progress
+			position: absolute
+			right: 0
+			bottom: 0
+			left: 0
+			height: 4px
+
+			@include media('min', 'tablet')
+				display: none
+
+			&::after
+				content: ''
+				position: absolute
+				top: 0
+				bottom: 0
+				left: 0
+				width: 0
+				background-color: var(--color-primary-500)
+
+	&__navigation
+		display: flex
+		flex-direction: column
+		width: 44px
+		border-left: 1px solid var(--default-border)
+		background-color: var(--color-neutral-200)
+
+		@include media('max', 'tablet')
+			display: none
+
+	&__btn
+		display: flex
+		flex: auto
+		align-items: center
+		justify-content: center
+		border: 0
+		border-radius: 0
+		cursor: pointer
+
+		&:first-child
+			border-bottom: 1px solid var(--default-border)
+
+	.swiper-slide
+		&.swiper-slide-active
+			.hero-slider__slide-progress
+				&::after
+					animation: slide-progress 5s linear forwards
+
+@keyframes slide-progress
+	from
+		width: 0
+
+	to
+		width: 100%

@@ -1,0 +1,19 @@
+modal-template(id="modal-callback")
+	template(#default="{close}")
+		section.modal
+			button(data-dialog-close aria-label="закрыть" @click="close").modal__close
+				+icon('close').modal__close-icon
+
+			.modal__wrapper
+				h2.modal__title.title.title--h4 Заказать звонок
+
+				p.modal__text Мы перезвоним вам в течение 10 минут. Укажите, пожалуйста, ваш номер телефона.
+
+				.modal__bottom
+					.modal__buttons
+						button(@click="close").btn.btn--color-secondary.btn--size-small
+							span.btn__text Отмена
+
+						button.btn.btn--color-secondary.btn--size-small
+							span.btn__text Заказать
+							+icon('arrow-right').btn__icon

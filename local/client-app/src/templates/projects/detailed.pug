@@ -1,0 +1,10 @@
+section.page__section.section.section--half.documents
+	.wrapper
+		.section__inner
+			.section__header
+				.section__title-block
+					.section__title.title.title--h3 Подробнее
+
+			.section__content
+				- for (let i = 0; i < 6; i++)
+					+document-card({title: 'Название файла в одну <br> или несколько строк', caption: '.PDF, 476 Кб'})

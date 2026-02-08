@@ -1,0 +1,46 @@
+.error-block
+	display: flex
+	flex-direction: column
+	justify-content: center
+	padding-top: calc(var(--header-height) + var(--padding-xl))
+
+	@include media('min', 'tablet')
+		min-height: calc(100svh - var(--header-height))
+		padding-top: var(--header-height)
+
+	&__wrapper
+		display: grid
+		grid-gap: 24px
+		grid-template-columns: repeat(12, minmax(0, 1fr))
+
+		@include media('max', 'tablet')
+			display: flex
+			flex-direction: column-reverse
+
+	&__info
+		grid-column: span 5
+
+	&__title
+		&:not(:last-child)
+			margin-bottom: fluid(24, 12)
+
+	&__desc
+		p
+			font-size: var(--font-size-text-l)
+
+		ul
+			li
+				padding-left: fluid(22, 18)
+				font-size: var(--font-size-text-l)
+
+				&:not(:first-child)
+					margin-top: 12px
+
+	&__btn
+		margin-top: fluid(64, 24)
+
+	&__img
+		--width: 900px
+		--aspect-ratio: 900/413
+		--object-fit: contain
+		grid-column: 7/13

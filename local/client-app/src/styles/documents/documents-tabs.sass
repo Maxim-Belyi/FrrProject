@@ -1,0 +1,15 @@
+.documents-tabs
+	display: grid
+	grid-template-columns: repeat(2, minmax(0, 1fr))
+	gap: var(--gap-3xl) var(--gap-xs)
+	padding-top: var(--gap-xs)
+
+	@include media('max', 'laptop')
+		display: flex
+		flex-direction: column
+
+	&__tabs
+		grid-column: 2
+
+		@include media('max', 'laptop')
+			padding: 0 var(--wrapper-padding)

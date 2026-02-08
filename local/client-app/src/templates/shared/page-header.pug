@@ -1,0 +1,24 @@
+mixin page-header(item)
+	- var slots = {};
+	mixin slot(name)
+		- slots[name] = block
+	- block ? block() : undefined
+
+	section.page-header&attributes(attributes)
+		.wrapper
+			.page-header__inner
+				if item.breadcrumbs
+					.page-header__breadcrumbs
+						+breadcrumbs(item.breadcrumbs, item.backward)
+
+				.page-header__top
+					h1.page-header__title.title.title--h1!=item.title
+
+					if slots['actions']
+						.page-header__actions
+							- slots['actions']();
+
+				if slots['content']
+					.page-header__content
+						- slots['content']();
+

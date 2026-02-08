@@ -1,0 +1,27 @@
+mixin employee-card(data)
+	article.employee-card&attributes(attributes)
+		.employee-card__preview
+			if data.img
+				+image(
+					{
+						src: data.img,
+						width: '320',
+						height: '360',
+						lazy: true,
+						alt: 'alt'
+					}
+				).employee-card__image
+			else
+				+image(
+					{
+						src: 'img/content/command/plug.webp',
+						width: '320',
+						height: '360',
+						lazy: true,
+						alt: 'alt'
+					}
+				).employee-card__plug
+
+		.employee-card__desc
+			.employee-card__title.title.title--h5!=data.title
+			.employee-card__caption.text!=data.caption

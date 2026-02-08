@@ -1,0 +1,42 @@
+-
+	const photos = [
+		{
+			title: 'Новая инициатива по улучшению инфраструктуры Бурятии',
+			text: 'Фонд регионального развития запускает проект по модернизации общественных пространств.',
+			img: 'img/content/media/news-1.webp',
+			link: true,
+			album: true,
+		},
+		{
+			title: 'Новая программа по улучшению жилищных условий в Бурятии',
+			text: 'Фонд регионального развития запускает инициативу по обеспечению доступным жильем для жителей Бурятии.',
+			img: 'img/content/media/news-2.webp',
+			link: true,
+			album: true,
+		},
+		{
+			title: 'Запуск программы по благоустройству городов Бурятии',
+			text: 'Фонд регионального развития объявляет о новой программе, ',
+			img: 'img/content/media/news-3.webp',
+			link: true,
+			album: true,
+		},
+		{
+			title: 'Новая инициатива по улучшению инфраструктуры Бурятии',
+			text: 'Фонд регионального развития запускает проект по модернизации общественных пространств.',
+			img: 'img/content/media/news-4.webp',
+			link: true,
+			album: true,
+		},
+	]
+
+section.page__section.section.news
+	.wrapper
+		.section__inner
+			.news__content
+				.news__list
+					- for (let i = 0; i < 3; i++)
+						each item in photos
+							+news-card(item)
+
+				+pagination-block.news__pagination

@@ -1,0 +1,53 @@
+.map-main
+	position: sticky
+	top: var(--header-height)
+	display: flex
+	flex-direction: column
+	gap: var(--gap-l)
+
+	&__head
+		position: absolute
+		top: 0
+		left: 0
+		z-index: var(--z-index-above)
+
+		display: grid
+		grid-template-columns: repeat(2, minmax(0, 1fr))
+		align-items: flex-start
+		gap: var(--gap-l)
+
+		width: 100%
+		padding: var(--padding-xl)
+
+		@include media('max', 'laptop')
+			position: static
+			display: flex
+			flex-direction: column-reverse
+			padding: 0
+
+	&__tags
+		filter: drop-shadow(4px 4px 42px rgba(40, 40, 40, 0.3))
+
+	&__filters
+		display: flex
+		flex-wrap: wrap
+		align-items: flex-start
+		justify-content: flex-end
+		gap: var(--gap-xxs)
+
+		@include media('min', 'laptop')
+			filter: drop-shadow(4px 4px 42px rgba(40, 40, 40, 0.3))
+
+	&__select
+		@include media('max', 'tablet')
+			order: 2
+			width: 100%
+
+	&__search
+		@include media('max', 'tablet')
+			flex-grow: 1
+			width: 269px
+
+	&__submit
+		@include media('max', 'laptop')
+			--btn-bg: var(--color-neutral-300)

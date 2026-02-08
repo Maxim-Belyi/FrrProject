@@ -1,0 +1,59 @@
+.gallery-slider
+	--gs-gap: var(--gap-l)
+	--gs-pagination-size: var(--font-size-text-m)
+
+	position: relative
+	isolation: isolate
+	display: flex
+	flex-direction: column
+	gap: var(--gs-gap)
+	user-select: none
+
+	&__slider
+		display: flex
+		flex-direction: column
+		flex-grow: 1
+		gap: var(--gs-gap)
+		width: 100%
+		height: 100%
+		padding-bottom: calc(var(--gs-pagination-size) * var(--line-height) + var(--gs-gap))
+
+	&__slide
+		display: flex
+		opacity: 0.4
+		transition: opacity 0.5s
+
+		&.swiper-slide-active
+			opacity: 1
+
+		&.swiper-slide-prev
+			.gallery-slider__media
+				cursor: url('/img/cursors/prev.svg'), auto
+
+		&.swiper-slide-next
+			.gallery-slider__media
+				cursor: url('/img/cursors/next.svg'), auto
+
+	&__pagination
+		display: flex
+		flex-shrink: 0
+		align-items: center
+		justify-content: center
+		gap: 8px
+		color: var(--color-neutral-500)
+		font-size: var(--gs-pagination-size)
+
+		.swiper-pagination
+			&-current
+				color: var(--color-primary-500)
+
+	&__media
+		--object-fit: cover
+		display: flex
+		align-items: center
+		justify-content: center
+		width: 100%
+		max-height: 100%
+
+		@include media('max', 'tablet')
+			--object-fit: contain

@@ -1,0 +1,49 @@
+.mobile-menu
+	position: fixed
+	top: 0
+	left: 0
+
+	width: 100%
+
+	background-color: var(--color-neutral-200)
+	opacity: 0
+
+	transition: opacity 0.3s
+
+	pointer-events: none
+
+	&.active
+		opacity: 1
+		pointer-events: all
+
+	&__header
+		display: flex
+		align-items: center
+		justify-content: space-between
+		height: var(--header-height)
+		padding: var(--padding-xl) 0
+		border-bottom: 1px solid var(--default-border)
+
+		@include out-wrapper
+
+	&__logo
+		--logo-width: 220px
+		height: 27px
+
+	&__close
+		size: 20px
+		color: var(--color-primary-500)
+
+	&__inner
+		display: flex
+		flex-direction: column
+		gap: var(--gap-xl)
+		padding: var(--padding-xl) 0
+		border-bottom: 1px solid var(--default-border)
+
+		@include out-wrapper
+
+	&__list
+		display: flex
+		flex-direction: column
+		gap: var(--gap-m)

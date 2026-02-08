@@ -1,0 +1,53 @@
+.breadcrumbs
+	--breadcrumb-font-size: var(--font-size-text-s)
+	--breadcrumb-line-height: var(--line-height-l)
+	--breadcrumb-icon-margin: var(--gap-xs)
+	--breadcrumb-color: var(--color-neutral-500)
+	--breadcrumb-color-hover: var(--color-primary-500)
+
+	color: var(--breadcrumb-color)
+
+	&__backward
+		display: flex
+		gap: 8px
+		font-size: var(--breadcrumb-font-size)
+		line-height: var(--breadcrumb-line-height)
+		text-decoration: none
+
+		@include media('min', 'tablet')
+			display: none
+
+		+ .breadcrumbs__items
+			@include media('max', 'tablet')
+				display: none
+
+	&__items
+		display: flex
+		flex-wrap: wrap
+
+	&__item
+		display: flex
+		align-items: center
+		font-size: var(--breadcrumb-font-size)
+		line-height: var(--breadcrumb-line-height)
+
+		&:last-child
+			.breadcrumbs__link
+				cursor: default
+
+		&:not(:last-child)
+			margin-right: var(--breadcrumb-icon-margin)
+
+			&::after
+				content: '/'
+				display: inline-block
+				margin-left: var(--breadcrumb-icon-margin)
+
+	&__link
+		color: currentcolor
+		text-align: left
+		text-decoration: none
+		transition: color 0.3s ease
+
+		@include hover
+			color: var(--breadcrumb-color-hover)

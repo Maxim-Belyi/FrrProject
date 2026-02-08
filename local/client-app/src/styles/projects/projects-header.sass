@@ -1,0 +1,27 @@
+.projects-header
+	@include dotted-grid('gray', 'vertical')
+
+	&__wrapper
+		display: grid
+		grid-template-columns: repeat(2, minmax(0, 1fr))
+		gap: var(--gap-xs)
+
+		@include media('max', 'mobile-xl')
+			grid-template-columns: minmax(0, 1fr)
+
+	&__info
+		display: flex
+		flex-direction: column
+		align-items: flex-start
+		gap: var(--gap-m)
+
+	&__text
+		width: 100%
+		max-width: 682px
+		font-size: var(--font-size-h4)
+		font-weight: 500
+		letter-spacing: var(--letter-spacing-m)
+		line-height: var(--line-height-m)
+
+	&__btn
+		margin-top: auto

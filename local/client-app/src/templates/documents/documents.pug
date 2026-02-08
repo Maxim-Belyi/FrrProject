@@ -1,0 +1,7 @@
+section.page__section.section.documents
+	.wrapper
+		.section__inner
+			.section__content
+				.documents__list
+					- for (let i = 0; i < 6; i++)
+						+document-card({title: 'Название файла в одну <br> или несколько строк', caption: '.PDF, 476 Кб'})

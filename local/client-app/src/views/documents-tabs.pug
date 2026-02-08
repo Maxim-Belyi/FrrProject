@@ -1,0 +1,31 @@
+extends /base/_head
+block vars
+	- let title = 'Методические материалы'
+	- let layoutClass = 'layout'
+	- let bodyClass = null
+
+block content
+	+header({})
+
+	main.page__main
+		+page-header({title: 'Методический <br> кабинет', breadcrumbs: ['Главная', 'Методическийкабинет']})
+			+slot('actions')
+				nav.tabs
+					ul.tabs__list
+						li.tabs__item
+							a(href="#").tab.tab--default.active Методические материалы
+						li.tabs__item
+							a(href="#").tab.tab--default Нормативно-правовая база
+
+			+slot('content')
+				-
+					const pages = [
+						{label: 'Мастер-план', id: 1, link: 'https://buryatiafuture.ru/documents/metodicheskie-materialy/master-plany/'},
+						{label: 'Опорно населенные пункты', id: 2, link: 'https://buryatiafuture.ru/documents/metodicheskie-materialy/opornye-naselennye-punkty/'},
+					];
+				page-select(:value="1" :options=pages)
+
+		include ../templates/documents/documents-with-text
+
+
+	include ../templates/shared/footer

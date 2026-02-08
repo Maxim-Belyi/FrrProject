@@ -1,0 +1,11 @@
+mixin document-card(item)
+	article.documents-card&attributes(attributes)
+		.documents-card__desc
+			.documents-card__info
+				.documents-card__title.title.title--h5!=item.title
+				.documents-card__caption.text.text--s!=item.caption
+
+			a(href="#").documents-card__download.btn.btn--color-secondary
+				+icon('download').btn__icon
+
+		a(href="#").documents-card__link

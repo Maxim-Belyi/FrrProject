@@ -1,0 +1,26 @@
+extends /base/_head
+block vars
+	- let title = 'Об опорных населенных пунктах'
+	- let layoutClass = 'layout'
+	- let bodyClass = null
+
+block content
+	+header({})
+
+	main.page__main
+		+page-header({title: 'Об опорных <br> населенных пунктах', breadcrumbs: ['Главная', 'Проекты', 'Об опорных населенных пунктах']})
+			+slot('actions')
+				nav.tabs
+					ul.tabs__list
+						li.tabs__item
+							a(href="#").tab.tab--default О мастер-плане
+						li.tabs__item
+							a(href="#").tab.tab--default.active Об опорных населенных пунктах
+
+		include ../templates/projects/points
+
+		include ../templates/projects/partners
+
+		include ../templates/projects/detailed
+
+	include ../templates/shared/footer

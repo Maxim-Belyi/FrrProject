@@ -1,0 +1,176 @@
+@import '@vueform/multiselect/themes/default.css'
+
+.input-select
+	--select-width: 280px
+	z-index: var(--z-index-above)
+	flex: 1 1 auto
+	min-width: var(--select-width)
+
+	&.multiselect
+		--ms-font-size: var(--di-font-size)
+		--ms-line-height: var(--di-line-height)
+		--ms-bg: var(--di-bg)
+		--ms-bg-disabled: var(--di-bg-disabled)
+		--ms-border-color: var(--di-border-color)
+		--ms-border-width: var(--di-border-width)
+		--ms-border-color-active: var(--di-border-color-focus)
+		--ms-border-width-active: var(--di-border-width)
+		--ms-radius: var(--di-border-radius)
+		--ms-py: var(--di-py)
+		--ms-px: var(--di-px)
+		--ms-ring-width: 0
+		--ms-ring-color: none
+		--ms-placeholder-color: var(--di-placeholder-color)
+		--ms-max-height: 225px
+		--ms-spinner-color: var(--di-border-color)
+		--ms-caret-color: var(--di-color)
+		--ms-clear-color: var(--di-border-color)
+		--ms-clear-color-hover: var(--di-border-color-active)
+		--ms-tag-font-size: var(--font-size-text-s)
+		--ms-tag-line-height: var(--line-height-l)
+		--ms-tag-font-weight: 400
+		--ms-tag-bg: var(--color-neutral-300)
+		--ms-tag-bg-disabled: var(--color-neutral-400)
+		--ms-tag-color: var(--color-neutral-900)
+		--ms-tag-color-disabled: var(--color-neutral-900)
+		--ms-tag-radius: var(--radius-m)
+		--ms-tag-py: 1px
+		--ms-tag-px: var(--padding-s)
+		--ms-tag-my: 4px
+		--ms-tag-mx: 4px
+		--ms-tag-remove-radius: var(--radius-s)
+		--ms-tag-remove-py: 4px
+		--ms-tag-remove-px: 4px
+		--ms-tag-remove-my: 0
+		--ms-tag-remove-mx: 2px
+		--ms-dropdown-bg: var(--di-bg)
+		--ms-dropdown-border-color: transparent
+		--ms-dropdown-border-width: 0
+		--ms-dropdown-radius: var(--radius-l)
+		--ms-group-label-py: fluid(14, 10)
+		--ms-group-label-px: fluid(16, 12)
+		--ms-group-label-line-height: var(--di-line-height)
+		--ms-group-label-bg: transparent
+		--ms-group-label-color: var(--di-color)
+		--ms-group-label-bg-pointed: var(--color-primary-400)
+		--ms-group-label-color-pointed: var(--color-neutral-100)
+		--ms-group-label-bg-disabled: var(--color-neutral-200)
+		--ms-group-label-color-disabled: var(--color-neutral-500)
+		--ms-group-label-bg-selected: var(--color-primary-500)
+		--ms-group-label-color-selected: var(--color-neutral-100)
+		--ms-group-label-bg-selected-pointed: var(--color-neutral-300)
+		--ms-group-label-color-selected-pointed: var(--color-neutral-100)
+		--ms-group-label-bg-selected-disabled: var(--color-neutral-400)
+		--ms-group-label-color-selected-disabled: var(--color-neutral-200)
+		--ms-option-font-size: var(--di-font-size)
+		--ms-option-line-height: var(--di-line-height)
+		--ms-option-bg-pointed: var(--color-neutral-300)
+		--ms-option-color-pointed: var(--color-neutral-900)
+		--ms-option-bg-selected: var(--color-neutral-200)
+		--ms-option-color-selected: var(--color-primary-500)
+		--ms-option-bg-disabled: rgba(var(--color-neutral-100-trans), 0.3)
+		--ms-option-color-disabled: rgba(var(--color-neutral-900-trans), 0.3)
+		--ms-option-bg-selected-pointed: var(--color-neutral-300)
+		--ms-option-color-selected-pointed: var(--color-primary-500)
+		--ms-option-bg-selected-disabled: var(--color-neutral-200)
+		--ms-option-color-selected-disabled: rgba(var(--color-neutral-900-trans), 0.3)
+		--ms-option-py: var(--gap-xs)
+		--ms-option-px: var(--gap-xs)
+		--ms-empty-color: var(--di-color)
+		color: var(--di-color)
+		transition: border-color 0.3s ease
+
+		@include hover
+			--ms-border-color-active: var(--di-border-color-hover)
+			--ms-border-color: var(--di-border-color-hover)
+
+		&.is-open
+			z-index: calc(var(--z-index-dropdown) + 1)
+			border-radius: var(--ms-radius)
+
+		&.is-disabled:not(.is-readonly)
+			--ms-border-color: var(--di-border-color-disabled)
+			--ms-placeholder-color: var(--di-color-disabled)
+			--ms-caret-color: var(--di-color-disabled)
+			--ms-color: var(--di-color-disabled)
+
+			& .multiselect
+				&-wrapper
+					cursor: not-allowed
+
+		&.is-readonly
+			--ms-bg-disabled: var(--di-bg)
+
+			& .multiselect
+				&-wrapper
+					cursor: help
+
+		&.is-error
+			--ms-border-color: var(--di-border-color-error)
+
+		& .multiselect
+			&-wrapper
+				min-height: calc(var(--di-min-height) - var(--di-border-width) * 2)
+
+			&-caret
+				size: var(--di-icon-size)
+				background-color: var(--color-neutral-500)
+
+				@include icon('chevron-down')
+
+			&-clear
+				size: var(--di-icon-size)
+				margin-right: calc(var(--di-px) / 2)
+				padding: 0
+
+				&-icon
+					size: 100%
+
+					@include icon('close')
+
+			&-spinner
+				size: var(--di-icon-size)
+				margin-right: calc(var(--di-px) / 2)
+
+				@include icon('spinner')
+
+			&-dropdown
+				padding: fluid(8, 4)
+				overflow: initial
+				border-radius: var(--ms-dropdown-radius)
+				box-shadow: 4px 4px 42px 0 rgba(40, 40, 40, 0.3)
+				transform: translateY(calc(100% + 6px))
+
+			&-options
+				gap: 2px
+				max-height: 100%
+				padding-right: var(--ms-dropdown-px)
+				overflow-y: auto
+
+				@include v-scroll
+
+			&-option
+				border-radius: var(--ms-radius)
+
+			&-tag
+				white-space: initial
+
+			&-group
+				display: flex
+				flex-direction: column
+				gap: 2px
+
+				&-label
+					border-radius: var(--ms-radius)
+					font-size: var(--ms-font-size)
+					font-weight: 400
+
+				&-options
+					display: flex
+					flex-direction: column
+					gap: 2px
+
+					& .multiselect-option
+						&::before
+							content: '—'
+							margin-right: 8px

@@ -1,0 +1,47 @@
+-
+	const command = [
+		{
+			title: 'Федорова <br> Мария Владимировна',
+			caption: 'Эксперт по привлечению инвестиций',
+			img: 'img/content/command/employee-2-1.webp',
+		},
+		{
+			title: 'Лебедев <br> Игорь Александрович',
+			caption: 'Директор по региональным инициативам',
+			img: 'img/content/command/employee-2-2.webp',
+		},
+		{
+			title: 'Смирнов <br> Дмитрий Александрович',
+			caption: 'Специалист по стратегическому планированию',
+			img: 'img/content/command/employee-2-3.webp',
+		},
+		{
+			title: 'Кузнецов <br> Алексей Павлович',
+			caption: 'Координатор проектов по улучшению инфраструктуры',
+			img: 'img/content/command/employee-2-4.webp',
+		},
+		{
+			title: 'Кузнецов <br> Алексей Викторович',
+			caption: 'Аналитик по экономическому развитию',
+			img: '',
+		},
+		{
+			title: 'Смирнов <br> Дмитрий Викторович',
+			caption: 'Менеджер по развитию региона',
+			img: 'img/content/command/employee-2-5.webp',
+		},
+		{
+			title: 'Смирнов <br> Дмитрий Викторович',
+			caption: 'Менеджер по развитию региона',
+			img: '',
+		},
+	]
+
+section.page__section.section.command
+	.wrapper
+		.section__inner
+			.section__content
+				.command__list
+					- for (let i = 0; i < 3; i++)
+						each item in command
+							+employee-card(item)

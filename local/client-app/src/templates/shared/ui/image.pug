@@ -1,0 +1,52 @@
+//- Миксин: image
+
+//- Параметры:
+//-   src: Путь к изображению.
+//-   alt: Альтернативный текст изображения (по умолчанию: "alt").
+//-   width: Ширина изображения.
+//-   height: Высота изображения.
+//-   lazy: Булево значение, указывающее, включена ли ленивая загрузка (по умолчанию: true).
+//-   mode: Класс модификатор, например: scale
+//-   images: Массив объектов, содержащих информацию:
+//-     src: Путь к изображению.
+//-     mediaQuery: Медиа запрос mix-width или min-width (по умолчанию: "max-width")
+//-     breakpoint: Значение медиа запроса
+
+//- Использование:
+//- сниппет 'img'.
+
+//- Пример:
+//- +image(
+			{
+				src: 'img/',
+				width: ,
+				height: ,
+			},
+		)
+
+//- сниппет 'imgMedia'.
+//- Пример:
+//- +image(
+			{
+				src: 'img/',
+				width: ,
+				height: ,
+			},
+			[
+				{
+					src: 'img/',
+					mediaQuery: 'max-width',
+					breakpoint: 768,
+				},
+			],
+		)
+
+mixin image({src, alt = "alt", width, height, lazy = true, mode}, images)
+	if images
+		picture&attributes(attributes).img(class=`${mode ? `${mode}` : ''}`)
+			each item in images
+				source(srcset=`${BASE_URL}${item.src}` media=`(${item.mediaQuery}: ${item.mediaQuery === "max-width" ? item.breakpoint / 16 : item.breakpoint / 16 + 0.1}em)`)
+			img(src=`${BASE_URL}${src}` alt=alt width=width height=height loading=`${lazy ? 'lazy' : ''}`).img__image
+	else
+		picture&attributes(attributes).img(class=`${mode ? `${mode}` : ''}`)
+			img(src=`${BASE_URL}${src}` alt=alt width=width height=height loading=`${lazy ? 'lazy' : ''}`).img__image

@@ -1,0 +1,15 @@
+.page
+	&__main
+		display: flex
+		flex-direction: column
+		flex-grow: 1
+
+		&--error
+			display: flex
+			flex-direction: column
+
+	&__section
+		--section-margin: var(--padding-3xl)
+
+		&:not(:last-child)
+			padding-bottom: var(--section-margin)

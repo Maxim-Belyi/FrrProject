@@ -1,0 +1,149 @@
+.input-check
+	--checkmark-size: 24px
+	--checkmark-border-radius: var(--radius-xs)
+	--checkmark-border-width: 1px
+	--checkmark-border-color: var(--color-neutral-400)
+	--checkmark-border-color-hover: var(--color-primary-500)
+	--checkmark-border-color-active: transparent
+	--checkmark-border-color-disabled: var(--color-neutral-400)
+	--checkmark-bg: var(--color-neutral-200)
+	--checkmark-bg-hover: var(--color-neutral-200)
+	--checkmark-bg-active: var(--color-primary-500)
+	--checkmark-bg-disabled: var(--color-neutral-300)
+	--checkmark-bg-error: var(--color-negative-light)
+	--checkmark-color: var(--color-neutral-100)
+	position: relative
+	display: flex
+	flex: 1 1 auto
+	align-items: center
+	width: 100%
+	cursor: pointer
+
+	@include hover
+		& .input-check
+			&__checkmark
+				border-color: var(--checkmark-border-color-hover)
+				background-color: var(--checkmark-bg-hover)
+
+	&.disabled
+		cursor: not-allowed
+
+		& .input-check
+			&__checkmark
+				border-color: var(--checkmark-border-color-disabled)
+
+			&__value
+				color: var(--di-color-disabled)
+
+	&.readonly:not(.disabled)
+		cursor: default
+
+	&.error
+		& .input-check
+			&__checkmark
+				border-color: var(--di-border-color-error)
+				background-color: var(--checkmark-bg-error)
+
+	&.active
+		--checkmark-bg-hover: var(--color-primary-400)
+
+		@include hover
+			& .input-check
+				&__checkmark
+					background-color: var(--checkmark-bg-hover)
+
+		&.disabled
+			& .input-check
+				&__checkmark
+					background-color: var(--checkmark-bg-disabled)
+
+		&.error
+			& .input-check
+				&__checkmark
+					border-color: var(--di-border-color-error)
+					background-color: var(--color-negative)
+
+		& .input-check
+			&__checkmark
+				border-color: var(--checkmark-border-color-active)
+				background-color: var(--checkmark-bg-active)
+
+				&::before
+					opacity: 1
+
+	&__checkmark
+		display: flex
+		flex-shrink: 0
+		align-items: center
+		justify-content: center
+
+		size: var(--checkmark-size)
+		margin-right: 12px
+
+		border-width: var(--checkmark-border-width)
+		border-style: solid
+		border-radius: var(--checkmark-border-radius)
+		border-color: var(--checkmark-border-color)
+
+		background-color: var(--checkmark-bg)
+
+		color: var(--checkmark-color)
+
+		transition: border-color 0.3s ease, background-color 0.3s ease
+
+		&::before
+			content: ''
+			position: relative
+
+			flex-grow: 0
+			flex-shrink: 0
+
+			width: 16px
+			height: 16px
+
+			background-color: currentcolor
+			mask-position: center
+			mask-size: contain
+
+			opacity: 0
+
+			transition: opacity 0.3s ease
+
+			pointer-events: none
+
+		&--checkbox
+			&::before
+				@include icon('checkmark')
+
+		&--radio
+			&::before
+				@include icon('radio')
+
+	&__value
+		color: currentcolor
+		font-size: var(--di-font-size)
+		line-height: var(--di-line-height)
+
+	&__input
+		position: absolute
+		top: 0
+		left: 0
+		width: 0
+		height: 0
+		opacity: 0
+		appearance: none
+
+		&:focus-visible:not(&:checked)
+			& + .input-check
+				&__checkmark
+					border-color: var(--checkmark-border-color-active)
+					background-color: var(--checkmark-bg-active)
+
+		&:checked:focus-visible
+			& + .input-check
+				&__checkmark
+					outline: 2px solid var(--di-bg-focus)
+					outline-offset: 2px
+
+	&--radio
+		--checkmark-border-radius: 50%

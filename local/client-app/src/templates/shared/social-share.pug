@@ -1,0 +1,30 @@
+mixin social-share({ title = "Поделиться", url = "#", text = 'Заголовок статьи' })
+	.soc-share
+		.soc-share__title.text!=title
+		.soc-share__list
+			a(target="_blank" href=`https://vk.com/share.php?url=${url}&text=${text}`).btn.btn--color-secondary.soc-share__item
+				+image(
+					{
+						src: `img/content/socials/vk.svg`,
+						width: 24,
+						height: 24,
+					},
+				).btn__icon
+
+			a(target="_blank" href=`https://connect.ok.ru/offer?url=${url}&title=${text}`).btn.btn--color-secondary.soc-share__item
+				+image(
+					{
+						src: `img/content/socials/ok.svg`,
+						width: 24,
+						height: 24,
+					},
+				).btn__icon
+
+			button.btn.btn--color-secondary.soc-share__item(@click="copyToClipboard(title, 'Ссылка скопирована')")
+				+image(
+					{
+						src: `img/content/socials/copy.svg`,
+						width: 24,
+						height: 24,
+					},
+				).btn__icon

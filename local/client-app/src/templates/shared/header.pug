@@ -1,0 +1,50 @@
+mixin header(item)
+	header.header(class=item.class)&attributes(attributes)
+		.wrapper
+			.header__inner
+				a(href=`${BASE_URL}`).header__logo.logo
+					+image(
+						{
+							src: 'img/logo.svg',
+							width: '190',
+							height: '48'
+						}
+					).logo__img
+
+				nav.header__menu.header-menu
+					header-dropdown(aria-id="media" placement="bottom-start" :triggers="['hover']" :popper-triggers="['hover']").header-menu__item
+						template(#trigger)
+							a(href="#").header-menu__title.link Медиа
+
+						.header-menu__list
+							a(href="#").header-menu__link.link Новости
+							a(href="#").header-menu__link.link Фото
+							a(href="#").header-menu__link.link Видео
+
+					.header-menu__item
+						a(href="#").header-menu__title.link Методический кабинет
+
+					header-dropdown(aria-id="projects" placement="bottom-start" :triggers="['hover']" :popper-triggers="['hover']").header-menu__item
+						template(#trigger)
+							a(href="#").header-menu__title.link Проекты
+
+						.header-menu__list
+							a(href="#").header-menu__link.link О мастер-плане
+							a(href="#").header-menu__link.link Об опорных населенных пунктах
+
+					.header-menu__item
+						a(href="#").header-menu__title.link FAQ
+
+					.header-menu__item
+						a(href="#").header-menu__title.link Команда
+
+					.header-menu__item
+						a(href="#").header-menu__title.link Контакты
+
+				.header__map
+					a(href="#").btn.btn--color-primary
+						span.btn__text Интерактивная карта
+
+				+icon('burger-menu').header__burger-menu(data-menu-open)
+
+		include ./mobile-menu

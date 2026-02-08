@@ -1,0 +1,51 @@
+mixin news-card(data)
+	article.news-card&attributes(attributes)
+		.news-card__preview
+			if data.img
+				+image(
+					{
+						src: data.img,
+						width: '600',
+						height: '400',
+						lazy: true,
+						alt: 'alt'
+					}
+				).news-card__image
+			else
+				+image(
+					{
+						src: 'img/content/media/plug.webp',
+						width: '600',
+						height: '400',
+						lazy: true,
+						alt: 'alt'
+					}
+				).news-card__image
+
+		.news-card__bottom
+			.news-card__actions
+				.badges
+					.badges__list
+						.badge
+							+icon('calendar-mini').badge__icon
+							.badge__text 12 июля
+
+						if data.album
+							.badge
+								+icon('image').badge__icon
+								.badge__text 342
+
+				.news-card__btns
+					if data.link
+						a(href="#").news-card__btn.btn.btn--color-secondary
+							+icon('arrow-right-up').btn__icon
+
+					if data.video
+						button.news-card__btn.btn.btn--color-secondary(@click=`openModal('modal-video', { title: 'Заголовок видео в одну или несколько строк', poster: '${BASE_URL}img/content/media/news-3.webp', source: [{ src: 'https://www.shutterstock.com/shutterstock/videos/1075356548/preview/stock-foobadgee-ice-hockey-rink-arena-professional-forward-player-breaks-defense-hitting-puck-with-stick-scores.mp4', type: 'video/mp4' },{ src: 'https://www.shutterstock.com/shutterstock/videos/1075356548/preview/stock-foobadgee-ice-hockey-rink-arena-professional-forward-player-breaks-defense-hitting-puck-with-stick-scores.webm', type: 'video/webm' }] })`)
+							+icon('play').btn__icon
+
+			.news-card__info
+				.news-card__title.title.title--h5(title=data.title)!=data.title
+				.news-card__desc(title=data.text)!=data.text
+
+		a(href="#").news-card__link

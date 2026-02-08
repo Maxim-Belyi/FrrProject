@@ -1,0 +1,23 @@
+mixin content-slider(items = [])
+	.standard-block__slider&attributes(attributes)
+		content-slider
+			template(#default)
+				each item, i in items
+					if i === 0
+						article.swiper-slide
+							+image(
+								{
+									src: `img/content/banner.jpg`,
+									width: '1208',
+									height: '720',
+								},
+							).standard-block__slider-img(fetchpriority='high')
+					else
+						article.swiper-slide
+							+image(
+								{
+									src:  `img/content/banner.jpg`,
+									width: '1208',
+									height: '720',
+								},
+							).standard-block__slider-img(fetchpriority='low')

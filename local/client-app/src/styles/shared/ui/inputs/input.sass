@@ -1,0 +1,206 @@
+.input
+	position: relative
+	display: flex
+	flex: 1 1 auto
+	width: 100%
+
+	&__input
+		position: relative
+
+		width: 100%
+		min-height: var(--di-min-height)
+		padding: var(--di-py) var(--di-px)
+
+		overflow: hidden
+
+		border-width: var(--di-border-width)
+		border-style: solid
+		border-radius: var(--di-border-radius)
+		border-color: var(--di-border-color)
+
+		background-color: var(--di-bg)
+
+		color: var(--di-color)
+
+		font-size: 16PX
+		letter-spacing: var(--di-letter-spacing)
+		line-height: var(--di-line-height)
+
+		text-overflow: ellipsis
+
+		transition: border-color 0.3s ease, background-color 0.3s ease
+
+		&::placeholder
+			color: var(--di-placeholder-color)
+			font-size: 16PX
+
+		&:focus
+			border-color: var(--di-border-color-focus)
+			outline: 0
+			background-color: var(--di-bg-focus)
+
+		@include hover
+			border-color: var(--di-border-color-hover)
+			background-color: var(--di-bg-hover)
+
+		&:disabled
+			--di-color: var(--di-color-disabled)
+			--di-border-color: var(--di-border-color-disabled)
+			--di-bg: var(--di-bg-disabled)
+			--di-placeholder-color: var(--di-color-disabled)
+			--di-icon-color: var(--di-color-disabled)
+			opacity: 1
+			cursor: not-allowed
+			pointer-events: none
+
+		&:read-only:not(:disabled)
+			cursor: help
+
+		&.error
+			border-color: var(--di-border-color-error)
+
+		//textarea
+		&--textarea
+			height: 120px
+			max-height: 350px
+			overflow: auto
+			white-space: normal
+			resize: vertical
+
+			@include hide-scroll
+
+		//password
+		&--password
+			padding-right: calc(var(--di-icon-size) + var(--di-px) * 1.5)
+
+		//date
+		&--date
+			padding-right: calc(var(--di-icon-size) + var(--di-px) * 1.5)
+
+		//file
+		&--file
+			display: flex
+			align-items: center
+			padding-right: calc(var(--di-icon-size) + var(--di-px) * 1.5)
+
+		//search
+		&--search
+			margin: 0
+			padding-right: calc(var(--di-icon-size) * 2 + var(--di-px) * 2)
+			padding-left: calc(var(--di-icon-size) + var(--di-px) * 1.5)
+
+	&__placeholder
+		color: var(--di-placeholder-color)
+		pointer-events: none
+
+	&__value
+		display: inline-block
+		max-width: 100%
+		overflow: hidden
+		text-overflow: ellipsis
+		white-space: nowrap
+		pointer-events: none
+
+	&__icon
+		position: absolute
+		top: 50%
+		z-index: var(--z-index-above)
+
+		display: flex
+		align-items: center
+		justify-content: center
+
+		size: var(--di-icon-size)
+
+		color: var(--di-icon-color)
+
+		transform: translateY(-50%)
+
+		cursor: pointer
+
+		&.disabled
+			color: var(--di-color-disabled)
+
+		&--pass
+			right: var(--di-px)
+
+		&--file
+			right: var(--di-px)
+
+		&--date
+			right: var(--di-px)
+
+		&--lens-search
+			left: var(--di-px)
+
+		&--confirm-search
+			right: var(--di-px)
+
+		&--clear-search
+			right: calc(var(--di-px) * 1.5 + var(--di-icon-size))
+
+	&__icon-image
+		width: 100%
+		height: 100%
+		color: currentcolor
+		transition: color 0.3s ease
+
+	&__dropdown
+		position: absolute
+		right: calc(var(--di-border-width) * -1)
+		bottom: 0
+		left: calc(var(--di-border-width) * -1)
+		z-index: var(--z-index-dropdown)
+
+		display: flex
+		flex-direction: column
+
+		margin-top: calc(var(--di-border-width, 1px) * -1)
+		padding: fluid(8, 4)
+
+		border-radius: var(--di-border-radius)
+		outline: none
+
+		background: var(--di-bg, #fff)
+
+		transform: translateY(calc(100% + 6px))
+
+	&__tooltips
+		display: flex
+		flex-direction: column
+		gap: 2px
+		max-height: 225px
+		padding-right: fluid(8, 4)
+		overflow-y: auto
+		-webkit-overflow-scrolling: touch
+
+		@include v-scroll
+
+	&__tooltip
+		display: flex
+		align-items: center
+		justify-content: flex-start
+
+		padding: fluid(14.5, 10) fluid(16, 12)
+
+		border-radius: var(--di-border-radius)
+
+		font-size: var(--di-font-size)
+		line-height: var(--di-line-height)
+
+		text-align: left
+		text-decoration: none
+
+		cursor: pointer
+
+		&:focus
+			outline: none
+
+			@include media('max', 'mobile-xl')
+				font-size: 16px
+
+		&:focus-visible
+			background-color: var(--color-neutral-200)
+
+		@include hover
+			background-color: var(--color-neutral-200)

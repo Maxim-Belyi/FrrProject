@@ -1,0 +1,50 @@
+.contacts
+	min-height: calc(100vh - var(--header-height) - fluid(320, 200) - fluid(150, 100))
+	padding-bottom: var(--padding-3xl)
+
+	@include dotted-grid('gray', 'vertical')
+
+	&__wrapper
+		margin-left: 50%
+
+		@include media('max', 'laptop-xl')
+			margin-left: 0
+
+	&__section
+		display: grid
+		grid-template-columns: repeat(2, minmax(0, 1fr))
+		min-height: 360px
+		row-gap: var(--gap-xl)
+
+		@include media('max', 'tablet')
+			grid-template-columns: minmax(0, 1fr)
+
+	&__view
+		display: flex
+		flex-direction: column
+		align-items: flex-start
+		gap: var(--gap-xl)
+
+	&__info
+		display: flex
+		flex-direction: column
+		gap: var(--gap-l)
+		width: 100%
+
+		.default-input
+			max-width: 280px
+
+	&__links
+		display: flex
+		flex-direction: column
+		gap: var(--gap-xs)
+
+	&__link
+		font-size: var(--font-size-h3)
+		line-height: var(--line-height-m)
+
+	&__btn
+		margin-top: auto
+
+		@include media('min', 'tablet')
+			margin-bottom: var(--padding-xl)

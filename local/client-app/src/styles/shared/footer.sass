@@ -1,0 +1,52 @@
+.footer
+	position: relative
+	padding: var(--padding-xl) 0
+	background-color: var(--color-neutral-300-dark)
+
+	@include media('max', 'tablet')
+		background-image: none
+
+	&__bg
+		position: absolute
+		inset: 0
+		pointer-events: none
+
+		@include media('max', 'tablet')
+			display: none
+
+		&-image
+			--object-fit: contain
+			--object-position: left
+			height: 100%
+
+	&__inner
+		display: grid
+		grid-template-columns: repeat(12, minmax(0, 1fr))
+		gap: var(--gap-xs)
+		min-height: calc(320px - var(--padding-xl) * 2)
+
+		@include media('max', 'tablet')
+			display: flex
+			flex-direction: column
+			gap: var(--gap-3xl)
+
+	&__info
+		display: flex
+		grid-column: span 4
+		flex-direction: column
+		gap: var(--gap-3xl)
+
+	&__contacts
+		margin-top: auto
+
+	&__menu
+		grid-column: span 8
+
+	&__logo
+		--logo-width: fluid(255, 190)
+		--logo-aspect-ratio: 265 / 36
+		flex-shrink: 0
+
+	&__socials
+		@include media('max', 'tablet')
+			display: none

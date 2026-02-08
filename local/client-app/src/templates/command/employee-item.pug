@@ -1,0 +1,5 @@
+mixin employee-item(data)
+	article.employee-item&attributes(attributes)
+		.employee-item__info
+			.employee-item__title.title.title--h5!=data.title
+			.employee-item__caption.text!=data.caption

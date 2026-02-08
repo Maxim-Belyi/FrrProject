@@ -1,0 +1,18 @@
+.documents
+	background-color: var(--body-bg)
+
+	&__content
+		position: relative
+		padding: var(--padding-l)
+
+		&::after
+			content: ''
+			position: absolute
+			bottom: -1px
+			left: calc((100vw - 100%) / 2 * -1)
+			z-index: var(--z-index-above)
+
+			width: calc(100vw - 2px)
+			height: 1px
+
+			background-color: var(--color-neutral-300)

@@ -1,0 +1,20 @@
+.footer-contacts
+	display: flex
+	flex-direction: column
+	gap: var(--gap-xxl)
+	color: var(--color-neutral-200)
+
+	@include media('max', 'tablet')
+		gap: var(--gap-l)
+
+	&__info
+		display: flex
+		flex-direction: column
+		gap: var(--gap-xxs)
+
+	&__link
+		--link-color: var(--color-neutral-200)
+
+	&__socials
+		@include media('min', 'tablet')
+			display: none

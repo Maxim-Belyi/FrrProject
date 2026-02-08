@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="8e30b370-b5fe-4e7a-984d-274cfd3d69fd" name="html.xpager.ru">
+        <fileTransfer rootFolder="/srv/www/html.xpager.ru/htdocs/public" accessType="SFTP" host="html.xpager.ru" port="22" sshConfigId="d8fe5e08-9ab7-4abf-90a0-2bbd9d53db0b" sshConfig="html.xpager.ru@html.xpager.ru:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" isUseRsync="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

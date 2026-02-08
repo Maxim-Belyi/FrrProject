@@ -1,0 +1,19 @@
+section.page__section.section.documents
+	.wrapper
+		.section__inner
+			.section__content
+				.documents-tabs
+					tabs-template(initial-tab="First" active-class="active")
+						template(#default="{ activeTab, getActiveClass, tabEvents }")
+							nav.tabs.documents-tabs__tabs
+								ul.tabs__list
+									each tab in ['First', 'Second', 'Third']
+										li.tabs__item(v-initial-scroll=tab === 'First')
+											button.tab.tab--default(:class=`getActiveClass('${tab}')` v-on=`tabEvents('${tab}')`)=tab
+							.tab-content.documents-tabs__content
+								template(v-if="activeTab === 'First'")
+
+								template(v-else-if="activeTab === 'Second'")
+									include ../../templates/content/standard-block
+								template(v-else-if="activeTab === 'Third'")
+									include ../../templates/content/standard-block

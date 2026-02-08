@@ -1,0 +1,23 @@
+extends /base/_head
+block vars
+	- let title = 'Методические материалы'
+	- let layoutClass = 'layout'
+	- let bodyClass = null
+
+block content
+	+header({})
+
+	main.page__main
+		+page-header({title: 'Методический <br> кабинет', breadcrumbs: ['Главная', 'Методический кабинет']})
+			+slot('actions')
+				nav.tabs
+					ul.tabs__list
+						li.tabs__item
+							button.tab.tab--default.active Методические материалы
+						li.tabs__item
+							button.tab.tab--default Нормативно-правовая база
+
+		include ../templates/documents/documents
+
+
+	include ../templates/shared/footer

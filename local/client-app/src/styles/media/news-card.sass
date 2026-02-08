@@ -1,0 +1,112 @@
+.news-card
+	position: relative
+
+	display: flex
+	flex-direction: column
+	gap: var(--gap-xl)
+
+	height: 100%
+	padding: var(--padding-xl)
+
+	border-right: 1px solid var(--default-border)
+	border-bottom: 1px solid var(--default-border)
+	background-color: var(--color-neutral-200)
+
+	cursor: pointer
+
+	@include media('min', 'laptop')
+		&:nth-child(3n - 2)
+			border-left: 1px solid var(--default-border)
+
+	@include media('max', 'laptop')
+		&:nth-child(2n - 1)
+			border-left: 1px solid var(--default-border)
+
+	@include media('max', 'mobile-xl')
+		border-left: 1px solid var(--default-border)
+
+	@include hover
+		.news-card
+			&__image
+				scale: 1.1
+
+			&__btns
+				opacity: 1
+
+			&__title
+				color: var(--color-primary-500)
+
+	&__preview
+		overflow: hidden
+
+	&__image
+		--object-fit: cover
+		--aspect-ratio: 600 / 400
+		transition: scale 0.3s
+		will-change: transform
+		scale: 1
+
+	&__bottom
+		display: grid
+		grid-template-columns: minmax(0, 275px) auto
+		flex: auto
+		gap: var(--gap-m)
+
+		@include media('max', 'laptop')
+			display: flex
+			flex-direction: column
+			gap: var(--gap-xl)
+
+	&__actions
+		display: flex
+		flex-direction: column
+		align-items: flex-start
+		gap: 2px
+
+	&__tags
+		display: flex
+		flex-wrap: wrap
+		gap: var(--gap-l)
+
+	&__tag
+		display: flex
+		align-items: center
+		gap: var(--gap-xs)
+		color: var(--color-neutral-500)
+
+		&-icon
+			size: 20px
+
+	&__btns
+		display: flex
+		flex-direction: column
+		align-items: flex-start
+		gap: 2px
+		margin-top: auto
+		opacity: 0
+		transition: opacity 0.3s
+
+		@include media('max', 'laptop')
+			display: none
+
+	&__btn
+		z-index: var(--z-index-above)
+
+	&__info
+		display: flex
+		flex-direction: column
+		gap: var(--gap-s)
+
+	&__title
+		transition: color 0.3s
+
+		@include cut-string(2)
+
+	&__desc
+		color: var(--color-neutral-500)
+
+		@include cut-string(3)
+
+	&__link
+		position: absolute
+		inset: 0

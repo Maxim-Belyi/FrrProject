@@ -1,0 +1,13 @@
+.command-partners
+	background-color: var(--body-bg)
+
+	&__list
+		display: grid
+		grid-template-columns: repeat(4, minmax(0, 1fr))
+		overflow: hidden
+
+		@include media('max', 'tablet')
+			grid-template-columns: repeat(2, minmax(0, 1fr))
+
+		@include media('max', 'mobile-xl')
+			grid-template-columns: repeat(1, minmax(0, 1fr))

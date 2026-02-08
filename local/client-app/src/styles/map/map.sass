@@ -1,0 +1,232 @@
+.map
+	height: 743px
+
+	@include media('max', 'laptop')
+		height: 428px
+
+.map-marker
+	--marker-ring: var(--default-border)
+	position: relative
+
+	&__point
+		position: relative
+
+		width: 36px
+		height: 36px
+
+		border: 2px solid var(--color-neutral-200)
+		border-radius: 50%
+		background-color: var(--marker-ring)
+		filter: drop-shadow(1px 2px 5px var(--shadow))
+
+		transition: 0.3s
+
+		cursor: pointer
+
+		&::before
+			content: ''
+			position: absolute
+			top: 100%
+			left: calc(50% - 2px / 2)
+			width: 2px
+			height: 14px
+			background-color: var(--color-neutral-200)
+
+		&::after
+			content: ''
+			position: absolute
+			top: calc(50% - 14px / 2)
+			left: calc(50% - 14px / 2)
+
+			width: 14px
+			height: 14px
+
+			border-radius: 50%
+			background-color: var(--color-neutral-200)
+
+	&__info
+		position: absolute
+		top: 0
+		left: calc(100% + 8px)
+		z-index: 1
+
+		display: grid
+		align-content: flex-start
+		gap: var(--gap-3xs)
+
+		width: max-content
+		max-width: 280px
+		padding: var(--padding-m)
+
+		border-radius: var(--radius-m)
+		background-color: var(--color-neutral-200)
+		filter: drop-shadow(1px 2px 5px var(--shadow))
+
+		color: var(--color-neutral-900)
+
+		font-size: var(--font-size-default)
+
+		cursor: pointer
+
+		@include hover
+			& .map-marker__info
+				&-label
+					color: var(--color-primary-500)
+
+		&-label
+			transition: color 0.3s
+
+		&-address
+			color: var(--color-neutral-500)
+
+	&--green
+		--marker-ring: var(--color-positive)
+
+	&--yellow
+		--marker-ring: var(--color-warning)
+
+	&--gray
+		--marker-ring: var(--color-neutral-500)
+
+.map-cluster
+	display: flex
+	align-items: center
+	justify-content: center
+
+	width: 36px
+	height: 36px
+
+	border: 2px solid var(--color-neutral-200)
+	border-radius: 50%
+
+	filter: drop-shadow(1px 2px 5px var(--shadow))
+
+	cursor: pointer
+
+	&::before
+		content: ''
+		position: absolute
+		top: 100%
+		left: calc(50% - 2px / 2)
+		width: 2px
+		height: 14px
+		background-color: var(--color-neutral-200)
+
+	&__inner
+		display: flex
+		align-items: center
+		justify-content: center
+
+		width: 20px
+		height: 20px
+		padding: var(--padding-xxs)
+
+		border-radius: 50%
+		background-color: var(--color-neutral-200)
+
+		font-size: var(--font-size-text-s)
+		font-weight: 500
+		line-height: var(--line-height-l)
+
+.ymaps3x0--marker:has(.map-marker__info)
+	z-index: 1 !important
+
+.ymaps3x0
+	&--geolocation-control
+		width: 20px !important
+		height: 20px !important
+		background: url('/__spritemap#icon-geolocation-view') center no-repeat !important
+
+	&--zoom
+		&-control
+			gap: var(--gap-xxs)
+
+			&__in, &__out
+				width: 20px !important
+				height: 20px !important
+
+			&__in
+				background: url('/__spritemap#icon-plus-view') center no-repeat !important
+
+			&__out
+				background: url('/__spritemap#icon-minus-view') center no-repeat !important
+
+	&--control
+		&__background
+			background: none !important
+			box-shadow: none !important
+			filter: drop-shadow(4px 4px 42px rgba(40, 40, 40, 0.3))
+
+		&-button
+			--btn-px: var(--padding-m)
+			--btn-py: var(--padding-m)
+			--btn-gap: var(--gap-xs)
+			--btn-min-height: 44px
+			// -----------------
+			--btn-color: var(--color-neutral-900)
+			--btn-color-hover: var(--color-neutral-900)
+			--btn-color-focus: var(--color-neutral-900)
+			--btn-color-active: var(--color-neutral-900)
+			--btn-color-disabled: var(--color-neutral-400)
+			// -----------------
+			--btn-bg: var(--color-neutral-200)
+			--btn-bg-hover: var(--color-neutral-100)
+			// -----------------
+			--btn-border-size: 0
+			--btn-border-color: transparent
+			--btn-border-color-hover: transparent
+			// -----------------
+			--btn-radius: 25px
+			// -----------------
+			--btn-icon-size: 20px
+			// -----------------
+			--btn-corners-size: 6px
+			--btn-corners-color: var(--color-neutral-900)
+			--calc-corners-size: calc(100% - var(--btn-corners-size))
+
+			position: relative !important
+
+			display: inline-flex !important
+			align-items: center !important
+			justify-content: center !important
+			gap: var(--btn-gap) !important
+
+			min-height: max(calc(var(--btn-font-size) * var(--btn-line-height) + var(--btn-py) * 2 + var(--btn-border-size) * 2), var(--btn-min-height)) !important
+			padding: var(--btn-py) var(--btn-px) !important
+
+			border: var(--btn-border-size) solid var(--btn-border-color) !important
+			border-radius: var(--btn-radius) !important
+
+			background-color: var(--btn-bg) !important
+
+			color: var(--btn-color) !important
+
+			transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease
+
+			cursor: pointer
+
+			&::before
+				content: ''
+				position: absolute
+				inset: 0
+
+				width: 100%
+				height: 100%
+
+				border: 1px solid var(--btn-corners-color)
+
+				opacity: 0
+
+				transition: opacity 0.3s, scale 0.3s
+				will-change: transform
+				scale: 0.6
+				clip-path: polygon(0 0, var(--btn-corners-size) 0, var(--btn-corners-size) 2px, var(--calc-corners-size) 2px, var(--calc-corners-size) 0, 100% 0, 100% var(--btn-corners-size), calc(100% - 2px) var(--btn-corners-size), calc(100% - 2px) var(--calc-corners-size), 100% var(--calc-corners-size), 100% 100%, var(--calc-corners-size) 100%, var(--calc-corners-size) calc(100% - 2px), var(--btn-corners-size) calc(100% - 2px), var(--btn-corners-size) 100%, 0 100%, 0 var(--calc-corners-size), 2px var(--calc-corners-size), 2px var(--btn-corners-size), 0 var(--btn-corners-size))
+
+			@include hover
+				border-color: var(--btn-border-color-hover) !important
+				background-color: var(--btn-bg-hover) !important
+				color: var(--btn-color-hover) !important
+
+				&::before
+					opacity: 1 !important
+					scale: 1 !important

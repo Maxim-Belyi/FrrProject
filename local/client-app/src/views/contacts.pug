@@ -1,0 +1,83 @@
+extends /base/_head
+block vars
+	- let title = 'Контакты'
+	- let layoutClass = 'layout'
+	- let bodyClass = null
+
+block content
+	+header({})
+
+	main.page__main
+		+page-header({title: 'Контакты', breadcrumbs: ['Главная', 'Контакты']})
+
+		section.page__section.section.contacts
+			.wrapper
+				.contacts__wrapper
+					.contacts__section
+						-
+							const cities = [
+								{
+									id: 1,
+									name: 'Улан-Удэ',
+									phones: [
+										'+7 (3012) 21-11-50',
+										'+7 (3012) 21-11-51',
+									],
+									email: [
+										'info@frr-rb.ru',
+										'info@frr-rb.ru'
+									],
+									link: '#',
+								},
+								{
+									id: 2,
+									name: 'Северобайкальск',
+									phones: [
+										'+7 (3012) 21-11-52',
+										'+7 (3012) 21-11-53',
+									],
+									email: [
+										'info@frr-rb.ru',
+										'info@frr-rb.ru'
+									],
+									link: '#',
+								},
+								{
+									id: 3,
+									name: 'Гусиноозёрск',
+									phones: [
+										'+7 (3012) 21-11-54',
+										'+7 (3012) 21-11-55',
+									],
+									email: [
+										'info@frr-rb.ru',
+										'info@frr-rb.ru'
+									],
+									link: '#',
+								},
+								{
+									id: 4,
+									name: 'Кяхта',
+									phones: [
+										'+7 (3012) 21-11-56',
+										'+7 (3012) 21-11-57',
+									],
+									email: [
+										'info@frr-rb.ru',
+										'info@frr-rb.ru'
+									],
+									link: '#',
+								},
+							]
+
+						contacts-view(:cities=cities)
+
+						.contacts__block.contacts-block
+							.contacts-block__wrapper
+								.contacts-block__title.title.title--h5 Ответим #[br] на ваши вопросы
+								.contacts-block__caption.text Оставьте заявку. Мы свяжемся #[br] с вами в ближайшее время.
+								.contacts-block__bottom
+									button(@click="openModal('modal-feedback', { page: 'контакты', cities: [{ id: 1, name: 'Челябинск' },{ id: 2, name: 'Екатеринбург' },{ id: 3, name: 'Москва' }] })").contacts-block__btn.btn.btn--color-tertiary
+										span.btn__text Оставить заявку
+
+	include ../templates/shared/footer

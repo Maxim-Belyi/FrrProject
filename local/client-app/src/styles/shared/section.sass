@@ -1,0 +1,88 @@
+.section
+
+	&:not(.page__section) + .section
+		.section__inner
+			&::before
+				content: none
+
+	&__inner
+		position: relative
+		display: flex
+		flex-direction: column
+		background-color: var(--body-bg)
+
+		&::before
+			top: 0
+
+		&::before, &::after
+			content: ''
+			position: absolute
+			left: calc((100vw - 100%) / 2 * -1)
+			z-index: var(--z-index-above)
+			width: calc(100vw - 2px)
+			height: 1px
+			background-color: var(--default-border)
+
+		&::after
+			bottom: 0
+
+	&__header
+		position: relative
+		display: flex
+		align-items: flex-start
+		gap: var(--gap-m)
+		padding: var(--padding-xl)
+		background-color: var(--body-bg)
+
+		@include out-wrapper-full
+
+		@include media('max', 'mobile-xl')
+			flex-direction: column
+			align-items: flex-start
+
+		&::after
+			content: ''
+			position: absolute
+			bottom: -1px
+			left: calc((100vw - 100%) / 2 * -1)
+			z-index: var(--z-index-above)
+
+			width: calc(100vw - 2px)
+			height: 1px
+
+			background-color: var(--color-neutral-300)
+
+	&__title
+		flex-grow: 1
+
+	&__title-block
+		display: flex
+		flex-direction: column
+		flex-grow: 1
+		align-items: flex-start
+		gap: var(--gap-xs)
+
+		@include media('max', 'tablet')
+			flex-direction: row
+			align-items: flex-end
+			width: 100%
+
+	&__btns
+		flex-shrink: 0
+
+	&__controls
+		@include media('max', 'tablet')
+			display: none
+
+	&__content
+		background-color: var(--body-bg)
+
+		@include out-wrapper-full
+
+	&--half
+		& .section
+			&__title-block
+				margin-left: 50%
+
+				@include media('max', 'mobile-xl')
+					margin-left: 0

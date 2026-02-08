@@ -1,0 +1,36 @@
+-
+	const gallerySlides = [
+		{ src: '../img/content/media/slide-4.webp', alt: 'alt', width: '1276', height: '826' },
+		{ src: '../img/content/media/slide-1.webp', alt: 'alt', width: '1276', height: '826' },
+		{ src: '../img/content/media/slide-2.webp', alt: 'alt', width: '1276', height: '826' },
+		{ src: '../img/content/media/slide-3.webp', alt: 'alt', width: '1276', height: '826' },
+		{ src: '../img/content/media/slide-2.webp', alt: 'alt', width: '1276', height: '826' },
+		{ src: '../img/content/media/slide-4.webp', alt: 'alt', width: '1276', height: '826' },
+		{ src: '../img/content/media/slide-4.webp', alt: 'alt', width: '1276', height: '826' },
+		{ src: '../img/content/media/slide-2.webp', alt: 'alt', width: '1276', height: '826' },
+		{ src: '../img/content/media/slide-3.webp', alt: 'alt', width: '1276', height: '826' },
+		{ src: '../img/content/media/slide-2.webp', alt: 'alt', width: '1276', height: '826' },
+		{ src: '../img/content/media/slide-1.webp', alt: 'alt', width: '1276', height: '826' },
+		{ src: '../img/content/media/slide-4.webp', alt: 'alt', width: '1276', height: '826' },
+		{ src: '../img/content/media/slide-4.webp', alt: 'alt', width: '1276', height: '826' },
+		{ src: '../img/content/media/slide-2.webp', alt: 'alt', width: '1276', height: '826' },
+		{ src: '../img/content/media/slide-3.webp', alt: 'alt', width: '1276', height: '826' },
+		{ src: '../img/content/media/slide-3.webp', alt: 'alt', width: '1276', height: '826' },
+		{ src: '../img/content/media/slide-2.webp', alt: 'alt', width: '1276', height: '826' },
+		{ src: '../img/content/media/slide-4.webp', alt: 'alt', width: '1276', height: '826' },
+	];
+
+section.page__section.section.album
+	.wrapper
+		.album__list
+			each item, i in gallerySlides
+				+image(
+					{
+						src: item.src,
+						width: '620',
+						height: '400',
+						lazy: true
+					}
+				).album__item(@click=`openGalleryModal('gallery-album', ${i})`)
+
+modal-gallery(id="gallery-album" title="Заголовок альбома" :slides=gallerySlides)

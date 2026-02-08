@@ -1,0 +1,82 @@
+.tab
+	--btn-corners-size: 6px
+	--btn-corners-color: var(--color-neutral-900)
+	--calc-corners-size: calc(100% - var(--btn-corners-size))
+	position: relative
+
+	display: inline-flex
+	align-items: center
+	justify-content: center
+	gap: var(--gap-xs)
+
+	padding: var(--padding-l) var(--padding-xl)
+
+	border: 0 solid transparent
+	border-radius: 1000px
+
+	font-size: var(--font-size-text-l)
+	font-weight: 500
+	letter-spacing: var(--letter-spacing-s)
+	line-height: 24px
+
+	text-align: center
+	text-decoration: none
+	white-space: nowrap
+
+	transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease
+
+	cursor: pointer
+
+	&::before
+		content: ''
+		position: absolute
+		inset: 0
+
+		width: 100%
+		height: 100%
+
+		border: 1px solid var(--btn-corners-color)
+
+		opacity: 0
+
+		transition: opacity 0.3s, scale 0.3s
+		will-change: transform
+		scale: 0.8 0.6
+		clip-path: polygon(0 0, var(--btn-corners-size) 0, var(--btn-corners-size) 2px, var(--calc-corners-size) 2px, var(--calc-corners-size) 0, 100% 0, 100% var(--btn-corners-size), calc(100% - 2px) var(--btn-corners-size), calc(100% - 2px) var(--calc-corners-size), 100% var(--calc-corners-size), 100% 100%, var(--calc-corners-size) 100%, var(--calc-corners-size) calc(100% - 2px), var(--btn-corners-size) calc(100% - 2px), var(--btn-corners-size) 100%, 0 100%, 0 var(--calc-corners-size), 2px var(--calc-corners-size), 2px var(--btn-corners-size), 0 var(--btn-corners-size))
+
+	&:focus
+		outline: none
+
+	&:focus-visible
+		outline: 2px solid var(--color-warning)
+		outline-offset: -2px
+
+	&:disabled,
+	&.disabled
+		pointer-events: none
+
+		&:focus-visible
+			outline: none
+
+	&--default,
+	&--light
+		background-color: var(--color-neutral-300)
+		color: var(--color-neutral-900)
+
+		@include hover
+			background-color: var(--color-neutral-400)
+
+			&::before
+				opacity: 1
+				scale: 1
+
+		&:active,
+		&.active
+			--btn-corners-color: var(--color-primary-500)
+			background-color: var(--color-primary-500)
+			color: var(--color-neutral-white)
+
+		&:disabled,
+		&.disabled
+			background-color: var(--color-neutral-200)
+			color: var(--color-neutral-400)

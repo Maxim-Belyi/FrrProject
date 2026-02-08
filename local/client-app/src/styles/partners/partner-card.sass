@@ -1,0 +1,66 @@
+.partner-card
+	position: relative
+	display: flex
+	flex-direction: column
+	height: 100%
+	border-right: 1px solid var(--default-border)
+	cursor: pointer
+
+	@include media('min', 'tablet')
+		&:nth-child(4n - 3)
+			border-left: 1px solid var(--default-border)
+
+	@include media('max', 'tablet')
+		&:nth-child(2n - 1)
+			border-left: 1px solid var(--default-border)
+
+	@include media('max', 'mobile-xl')
+		border-left: 1px solid var(--default-border)
+
+	@include hover
+		& .partner-card
+			&__preview
+				background-color: var(--color-neutral-100)
+
+	&__preview
+		display: flex
+		flex-shrink: 0
+		align-items: center
+		justify-content: center
+
+		width: 100%
+		min-height: fluid(320, 240)
+		aspect-ratio: 1 / 1
+
+		overflow: hidden
+
+		border-bottom: 1px solid var(--default-border)
+
+		transition: background-color 0.3s
+
+		@include media('max', 'mobile-xl')
+			aspect-ratio: auto
+
+	&__image
+		--width: auto
+		--object-fit: contain
+		max-width: 216px
+		max-height: 216px
+
+	&__desc
+		display: flex
+		flex-direction: column
+		gap: var(--gap-xs)
+		height: 100%
+		padding: var(--padding-xl)
+		border-bottom: 1px solid var(--default-border)
+
+	&__caption
+		color: var(--color-neutral-500)
+
+	&__link
+		position: absolute
+		inset: 0
+
+	&--nolink
+		cursor: default

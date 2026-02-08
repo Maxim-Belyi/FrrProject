@@ -1,0 +1,71 @@
+.documents-card
+	position: relative
+
+	display: grid
+	grid-template-columns: repeat(2, minmax(0, 1fr))
+	align-items: center
+
+	padding: var(--padding-xl)
+
+	border-bottom: 1px solid var(--default-border)
+
+	background-color: var(--color-neutral-200)
+
+	transition: background-color 0.3s
+
+	counter-increment: document
+
+	@include media('max', 'mobile-xl')
+		display: flex
+		gap: var(--gap-s)
+
+	&::before
+		content: counter(document, decimal-leading-zero)
+		color: var(--color-neutral-400)
+		font-size: var(--font-size-h3)
+		font-weight: 500
+		line-height: var(--line-height-m)
+
+	&::after
+		content: ''
+		position: absolute
+		bottom: -1px
+		left: calc((100vw - 100%) / 2 * -1)
+		z-index: var(--z-index-above)
+
+		width: calc(100vw - 2px)
+		height: 1px
+
+		background-color: var(--color-neutral-300)
+
+	@include hover
+		background-color: var(--color-neutral-100)
+
+		& .documents-card
+			&__title
+				color: var(--color-primary-500)
+
+	&__desc
+		display: flex
+		flex-grow: 1
+		align-items: center
+		gap: var(--gap-s)
+
+	&__info
+		display: flex
+		flex-direction: column
+		flex-grow: 1
+		gap: var(--gap-xs)
+
+	&__title
+		transition: color 0.3s
+
+	&__caption
+		color: var(--color-neutral-500)
+
+	&__download
+		z-index: var(--z-index-above)
+
+	&__link
+		position: absolute
+		inset: 0

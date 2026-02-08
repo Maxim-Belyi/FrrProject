@@ -1,0 +1,22 @@
+extends /base/_head
+block vars
+	- let title = 'Новости'
+	- let layoutClass = 'layout'
+	- let bodyClass = null
+
+block content
+	+header({})
+
+	main.page__main
+		+page-header({title: 'Интерактивная карта', breadcrumbs: ['Главная', 'Интерактивная карта']})
+			+slot('actions')
+				nav.tabs
+					ul.tabs__list
+						li.tabs__item
+							a(href="#").tab.tab--default.active Опорные населенные пункты
+						li.tabs__item
+							a(href="#").tab.tab--default Мастер-план
+
+		include ../templates/shared/map
+
+	include ../templates/shared/footer

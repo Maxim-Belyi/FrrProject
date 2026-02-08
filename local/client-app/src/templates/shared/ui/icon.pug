@@ -1,0 +1,6 @@
+//- Пример - +icon('icon-name').i-icon
+//- сниппет: svg
+
+mixin icon(name)
+	svg(aria-hidden="true")&attributes(attributes)
+		use(xlink:href=`/__spritemap#icon-${name}`)

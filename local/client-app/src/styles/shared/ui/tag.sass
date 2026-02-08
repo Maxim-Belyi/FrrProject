@@ -1,0 +1,147 @@
+.tag
+	--tag-px: var(--padding-l)
+	--tag-py: var(--padding-m)
+	--tag-gap: var(--gap-xs)
+	--tag-min-height: 42px
+	// -----------------
+	--tag-font-family: var(--font-family-primary)
+	--tag-font-size: 16PX
+	--tag-line-height: 20PX
+	--tag-letter-spacing: var(--letter-spacing-s)
+	--tag-font-weight: 500
+	--tag-text-transform: none
+	// -----------------
+	--tag-color: var(--color-neutral-900)
+	--tag-color-hover: var(--color-neutral-900)
+	--tag-color-focus: var(--color-neutral-900)
+	--tag-color-active: var(--color-neutral-900)
+	--tag-color-active-hover: var(--color-primary-500)
+	--tag-color-disabled: var(--color-neutral-400)
+	// -----------------
+	--tag-bg: var(--color-neutral-200)
+	--tag-bg-hover: var(--color-neutral-200)
+	--tag-bg-focus: var(--color-neutral-200)
+	--tag-bg-active: var(--color-neutral-200)
+	--tag-bg-disabled: var(--color-neutral-300)
+	// -----------------
+	--tag-border-size: 1px
+	--tag-border-color: var(--color-neutral-200)
+	--tag-border-color-hover: var(--color-neutral-500)
+	--tag-border-color-focus: var(--color-primary-500)
+	--tag-border-color-active: var(--color-primary-500)
+	--tag-border-color-disabled: var(--color-neutral-300)
+	// -----------------
+	--tag-state-color: var(--color-neutral-400)
+	// -----------------
+	--tag-count-px: var(--padding-s)
+	--tag-count-py: var(--padding-xxs)
+	--tag-count-size: var(--font-size-text-xs)
+	--tag-count-color: var(--color-neutral-500)
+	--tag-count-bg-color: var(--color-neutral-100)
+	// -----------------
+	--tag-radius: 25px
+	// -----------------
+	--tag-icon-size: 20px
+
+	position: relative
+
+	display: inline-flex
+	flex-shrink: 0
+	align-items: center
+	justify-content: center
+	gap: var(--tag-gap)
+
+	min-height: max(calc(var(--tag-font-size) * var(--tag-line-height) + var(--tag-py) * 2 + var(--tag-border-size) * 2), var(--tag-min-height))
+	padding: var(--tag-py) var(--tag-px)
+
+	border: var(--tag-border-size) solid var(--tag-border-color)
+	border-radius: var(--tag-radius)
+
+	background-color: var(--tag-bg)
+
+	color: var(--tag-color)
+
+	font-family: var(--tag-font-family)
+	font-size: var(--tag-font-size)
+	font-weight: var(--tag-font-weight)
+	letter-spacing: var(--tag-letter-spacing)
+	line-height: var(--tag-line-height)
+
+	text-align: center
+	text-decoration: none
+	text-transform: var(--tag-text-transform)
+
+	transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease
+
+	cursor: pointer
+
+	@include media('max', 'tablet')
+		--tag-color: var(--color-neutral-500)
+
+	&:focus
+		outline: none
+
+	&:focus-visible
+		border-color: var(--tag-border-color-focus)
+		background-color: var(--tag-bg-focus)
+		color: var(--tag-color-focus)
+
+	@include hover
+		border-color: var(--tag-border-color-hover)
+		background-color: var(--tag-bg-hover)
+		color: var(--tag-color-hover)
+
+	&:active,
+	&.active
+		border-color: var(--tag-border-color-active)
+		background-color: var(--tag-bg-active)
+		color: var(--tag-color-active)
+
+		@include hover
+			color: var(--tag-color-active-hover)
+
+	&:disabled,
+	&.disabled
+		border-color: var(--tag-border-color-disabled)
+		background-color: var(--tag-bg-disabled)
+		color: var(--tag-color-disabled)
+		cursor: not-allowed
+		pointer-events: none
+
+		&:focus-visible
+			outline: none
+
+	&__text
+		display: block
+		flex: none
+
+	&__color
+		flex-shrink: 0
+		width: 16px
+		height: 16px
+		border-radius: 50%
+		background-color: var(--tag-state-color)
+
+	&__icon
+		display: block
+		flex: none
+		size: var(--tag-icon-size)
+		color: currentcolor
+
+	&__count
+		height: 18px
+		padding: var(--tag-count-py) var(--tag-count-px)
+		border-radius: var(--radius-m)
+		background-color: var(--tag-count-bg-color)
+		color: var(--tag-count-color)
+		font-size: var(--tag-count-size)
+		line-height: normal
+
+	&--green
+		--tag-state-color: var(--color-positive)
+
+	&--yellow
+		--tag-state-color: var(--color-warning)
+
+	&--gray
+		--tag-state-color: var(--color-neutral-500)

@@ -1,0 +1,141 @@
+tr
+	td.product
+		table.product__main-table(border="0" cellspacing="0" cellpadding="0" role="presentation")
+			thead
+				tr
+					td.product__head
+						p.product__title Ваш заказ
+			tbody
+				tr
+					td.product__row-title
+						//[if (gte mso 9)|(IE)]>
+							<table align="center" border="0" cellspacing="0" cellpadding="0" role="presentation">
+							<tr>
+							<td>
+						//<![endif]
+						table.product__product-head(border="0" cellspacing="0" cellpadding="0" role="presentation")
+							tr
+								td
+									p.product__product-title.default-td Товар
+						//[if (gte mso 9)|(IE)]>
+							</td><td>
+						//<![endif]
+						table.product__count-head(border="0" cellspacing="0" cellpadding="0" role="presentation")
+							tbody.width-100
+								tr.width-100
+									td.product__product-title-td
+										p.product__product-title.default-td.text-center Количество
+									td.product__product-title-td.product__product-title-last
+										p.product__product-title.default-td.text-right Стоимость
+						//[if (gte mso 9)|(IE)]>
+							</td>
+							</tr>
+							</table>
+						//<![endif]
+				//- Товар 1
+				tr
+					td.product__row-prod
+						//[if (gte mso 9)|(IE)]>
+							<table align="center" border="0" cellspacing="0" cellpadding="0" role="presentation">
+							<tr>
+							<td>
+						//<![endif]
+						table.product__product(border="0" cellspacing="0" cellpadding="0" role="presentation")
+							tbody.width-100
+								tr.width-100
+									td.width-100
+										//[if (gte mso 9)|(IE)]>
+											<table align="center" border="0" cellspacing="0" cellpadding="0" role="presentation">
+											<tr>
+											<td>
+										//<![endif]
+										table.product__table-img(border="0" cellspacing="0" cellpadding="0" role="presentation")
+											tr
+												td.product__img
+													img(src=`${BASE_URL}img/email/product.png` alt="" border="0" width="100%" height="auto")
+										//[if (gte mso 9)|(IE)]>
+											</td><td>
+										//<![endif]
+										table.product__product-name(border="0" cellspacing="0" cellpadding="0" role="presentation")
+											tr
+												td
+													p.default-td.product__product-prod Название товара
+											tr
+												td
+													p.default-td.product__product-descr Описание товара
+										//[if (gte mso 9)|(IE)]>
+											</td>
+											</tr>
+											</table>
+										//<![endif]
+						//[if (gte mso 9)|(IE)]>
+							</td><td>
+						//<![endif]
+						table.product__count(border="0" cellspacing="0" cellpadding="0" role="presentation" align="center")
+							tbody.width-100
+								tr.width-100
+									td.product__count-td
+										p.default-td 1 шт.
+									td.product__count-td
+										p.default-td.text-right 3 600 руб.
+						//[if (gte mso 9)|(IE)]>
+							</td>
+							</tr>
+							</table>
+						//<![endif]
+				//- Товар 2
+				tr
+					td.product__row-prod
+						//[if (gte mso 9)|(IE)]>
+							<table align="center" border="0" cellspacing="0" cellpadding="0" role="presentation">
+							<tr>
+							<td>
+						//<![endif]
+						table.product__product(border="0" cellspacing="0" cellpadding="0" role="presentation")
+							tbody.width-100
+								tr.width-100
+									td.width-100
+										//[if (gte mso 9)|(IE)]>
+											<table align="center" border="0" cellspacing="0" cellpadding="0" role="presentation">
+											<tr>
+											<td>
+										//<![endif]
+										table.product__table-img(border="0" cellspacing="0" cellpadding="0" role="presentation")
+											tr
+												td.product__img
+													img(src=`${BASE_URL}img/email/product-2.png` alt="" border="0" width="100%" height="auto")
+										//[if (gte mso 9)|(IE)]>
+											</td><td>
+										//<![endif]
+										table.product__product-name(border="0" cellspacing="0" cellpadding="0" role="presentation")
+											tr
+												td
+													p.default-td.product__product-prod Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, labore placeat nulla 
+											tr
+												td
+													p.default-td.product__product-descr Описание товара Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor, nihil inventore? Quae deserunt repellat cupiditate quidem nostrum, reprehenderit perspiciatis cumque.
+										//[if (gte mso 9)|(IE)]>
+											</td>
+											</tr>
+											</table>
+										//<![endif]
+						//[if (gte mso 9)|(IE)]>
+							</td><td>
+						//<![endif]
+						table.product__count(border="0" cellspacing="0" cellpadding="0" role="presentation" align="center")
+							tbody.width-100
+								tr.width-100
+									td.product__count-td
+										p.default-td 1 шт.
+									td.product__count-td
+										p.default-td.text-right 3 600 руб.
+						//[if (gte mso 9)|(IE)]>
+							</td>
+							</tr>
+							</table>
+						//<![endif]
+				//- Итого
+				tr
+					td.product__sum-td
+						p.product__sum.main-color Итого
+						p.product__sum-right 33 600 ₽

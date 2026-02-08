@@ -1,0 +1,21 @@
+extends /base/_head
+block vars
+	- let title = 'Детальная новости'
+	- let layoutClass = 'layout'
+	- let bodyClass = null
+
+block content
+	+header({})
+
+	main.page__main
+		+page-header({title: 'Заголовок новости в одну или несколько строк h1', breadcrumbs: ['Главная', 'Медиа', 'Заголовок новости в одну или несколько строк h1']})
+			+slot('actions')
+				.badges
+					.badges__list
+						.badge
+							+icon('calendar-mini').badge__icon
+							.badge__text 6 июня
+
+		include ../templates/media/news-detail
+
+	include ../templates/shared/footer

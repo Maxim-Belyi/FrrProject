@@ -1,0 +1,21 @@
+.faq
+	width: 100%
+	overflow: hidden
+	background-color: var(--body-bg)
+
+	&__wrapper
+		display: grid
+		grid-template-columns: repeat(2, minmax(0, 1fr))
+		background-color: var(--body-bg)
+		row-gap: var(--gap-xl)
+
+		@include media('max', 'laptop')
+			grid-template-columns: minmax(0, 1fr)
+
+	&__questions
+		border-right: 1px solid var(--default-border)
+		border-left: 1px solid var(--default-border)
+
+	&__form
+		position: relative
+		padding: var(--padding-xl)

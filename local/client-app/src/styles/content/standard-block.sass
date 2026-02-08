@@ -1,0 +1,69 @@
+.standard-block
+	display: flex
+	flex-direction: column
+
+	&__banner
+		display: flex
+		flex-direction: column
+		gap: var(--gap-3xl)
+		width: calc(100vw - 1px)
+		max-width: none
+		margin-right: calc((100vw - 100%) / 2 * -1)
+		margin-left: calc((100vw - 100%) / 2 * -1)
+
+	&__banner-img
+		--width: 100%
+		--aspect-ratio: 1880/800
+		--object-fit: cover
+		max-height: 900px
+
+	&__banner-text
+		width: 100%
+		max-width: 900px
+		margin: 0 auto
+
+		@include media('max', 'tablet')
+			width: auto
+			margin: 0 var(--padding-xl)
+
+	&__content
+		width: 100%
+		max-width: 900px
+		margin-right: auto
+		margin-left: auto
+
+	&__slider
+		display: flex
+		flex-direction: column
+		gap: var(--gap-xl)
+		width: 100%
+		max-width: 900px
+		overflow: hidden
+
+		&:not(:last-child)
+			margin-bottom: var(--gap-3xl)
+
+		&-header
+			display: flex
+			align-items: flex-start
+			gap: var(--gap-m)
+
+			@include media('max', 'mobile-xl')
+				flex-direction: column
+				align-items: flex-start
+
+		&-title
+			flex-grow: 1
+
+		&-img
+			--width: 100%
+			--aspect-ratio: 936/406
+			--object-fit: cover
+
+		&-text
+			margin-top: var(--gap-xs)
+			color: var(--color-neutral-400)
+
+		.swiper-button
+			--swiper-button-size: 32px
+			--swiper-button-icon: 16px

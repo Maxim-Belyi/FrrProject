@@ -1,0 +1,22 @@
+extends /base/_head
+block vars
+	- let title = 'Что-то пошло не так'
+	- let layoutClass = 'layout'
+	- let bodyClass = null
+
+block content
+	+header({})
+
+	main.page__main.page__main--error
+		+error-block(
+			'Страница <br>не найдена',
+			[
+				'Страница, которую вы ищете, не существует или была удалена',
+			],
+			[],
+			'Перейти на главную',
+			'img/404.svg',
+		)
+
+
+	include ../templates/shared/footer

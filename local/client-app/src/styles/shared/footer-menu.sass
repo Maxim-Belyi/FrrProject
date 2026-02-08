@@ -1,0 +1,87 @@
+.footer-menu
+	display: flex
+	flex-direction: column
+	gap: var(--gap-l)
+
+	&__list, &__head
+		display: flex
+		flex-direction: column
+		align-items: flex-start
+		gap: var(--gap-xs)
+
+	&__privacy, &__copyright
+		display: flex
+		flex-direction: column
+		gap: var(--gap-l)
+
+		@include media('min', 'tablet')
+			display: contents
+
+	&__list
+		width: 100%
+		max-width: 150px
+
+	&__privacy
+		&-link
+			--link-color-hover: var(--color-neutral-200)
+			--link-font-size: var(--font-size-text-s)
+
+	&__copyright
+		&-title
+			order: -1
+			color: var(--color-neutral-200)
+			font-size: var(--font-size-text-s)
+
+		&-link
+			--link-font-size: var(--font-size-text-s)
+
+			@include media('min', 'tablet')
+				text-align: right
+
+	&__top
+		display: grid
+		grid-template-columns: repeat(4, minmax(0, 1fr))
+		gap: var(--gap-xs)
+
+		@include media('max', 'tablet')
+			grid-template-columns: repeat(2, minmax(0, 1fr))
+			column-gap: var(--gap-xl)
+			row-gap: var(--gap-l)
+
+	&__group
+		display: flex
+		flex-direction: column
+		gap: var(--gap-xs)
+
+		&:last-child
+			@include media('min', 'tablet')
+				align-items: flex-end
+
+	&__head
+		@include media('max', 'tablet')
+			gap: var(--gap-l)
+
+	&__title
+		color: var(--color-neutral-200)
+		font-weight: 500
+
+	&__item
+		--link-color-hover: var(--color-neutral-200)
+
+	&__socials
+		@include media('max', 'tablet')
+			display: none
+
+	&__bottom
+		display: grid
+		grid-template-columns: repeat(4, minmax(0, 1fr))
+		gap: var(--gap-xs)
+		margin-top: auto
+
+		@include media('max', 'tablet')
+			display: flex
+			flex-direction: column
+			gap: var(--gap-3xl)
+
+	&__link
+		--link-color: var(--color-neutral-200)

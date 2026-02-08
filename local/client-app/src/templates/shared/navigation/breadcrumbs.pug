@@ -1,0 +1,22 @@
+mixin breadcrumbs(elements, backward)
+	nav.breadcrumbs&attributes(attributes)
+		.breadcrumbs__wrapper
+			if backward
+				.breadcrumbs__backward
+					a.link(href=`${BASE_URL}`)
+						+icon('chevron-left').link__icon
+						span=backward
+
+			if elements
+				ol(itemscope itemtype="https://schema.org/BreadcrumbList").breadcrumbs__items
+					each breadcrumb, i in elements
+						if i === 0
+							li(itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem").breadcrumbs__item
+								a.breadcrumbs__link(href=`${BASE_URL}` aria-current="page" itemprop="item")=breadcrumb
+								meta(itemprop="position" content=i)
+						else if i === elements.length - 1
+							li(itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem").breadcrumbs__item=breadcrumb
+						else
+							li(itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem").breadcrumbs__item
+								a.breadcrumbs__link(href=`${BASE_URL}` itemprop="item")=breadcrumb
+								meta(itemprop="position" content=i)

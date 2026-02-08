@@ -1,0 +1,45 @@
+-
+	const partners = [
+		{
+			title: 'Российские Железные дороги',
+			caption: 'Эксперт по привлечению инвестиций',
+			img: 'img/content/partners/partner-1.webp'
+		},
+		{
+			title: 'Авиасейлс',
+			caption: 'Эксперт по привлечению инвестиций',
+			img: 'img/content/partners/partner-2.webp'
+		},
+		{
+			title: 'Медицинская Палата Бурятии',
+			caption: 'Эксперт по привлечению инвестиций',
+			img: 'img/content/partners/partner-3.webp'
+		},
+		{
+			title: 'Останкинский мясоперерабатывающий комбинат',
+			caption: 'Эксперт по привлечению инвестиций',
+			img: 'img/content/partners/partner-4.webp'
+		},
+		{
+			title: 'Яндекс Go',
+			caption: 'Эксперт по привлечению инвестиций',
+			img: 'img/content/partners/partner-5.webp'
+		},
+		{
+			title: 'Merck',
+			caption: 'Эксперт по привлечению инвестиций',
+			img: 'img/content/partners/partner-6.webp'
+		}
+	]
+
+section.section.section--half.command-partners
+	.wrapper
+		.section__inner
+			.section__header
+				.section__title-block
+					.section__title.title.title--h3 Партнеры
+
+			.section__content
+				.command-partners__list
+					each item in partners
+						+partner-card(item)

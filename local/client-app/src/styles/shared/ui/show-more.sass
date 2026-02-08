@@ -1,0 +1,35 @@
+.show-more
+	&--block
+		--block-height: 100px
+		--mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 98%)
+		max-height: var(--block-height)
+		overflow: hidden
+
+		&.hidden
+			mask-image: var(--mask-image)
+
+		&.active
+			max-height: unset
+			mask-image: unset
+
+	&--text
+		--cut-string-value: 3
+
+		@include cut-string(var(--cut-string-value))
+
+		&.active
+			display: block
+
+//для примера работы show-more
+.toggle-text
+	display: grid
+	align-content: flex-start
+	gap: 8px
+	width: 200px
+
+	&__content
+		--block-height: 60px
+
+		@include media('max', 'tablet')
+			--cut-string-value: 10
+			--block-height: 200px

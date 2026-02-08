@@ -1,0 +1,26 @@
+.faq-form
+	display: grid
+	grid-template-columns: repeat(12, minmax(0, 1fr))
+	gap: var(--gap-xxl)
+
+	@include media('max', 'tablet')
+		display: flex
+		flex-direction: column
+
+	&__form
+		grid-column: span 7
+
+	&__info
+		display: flex
+		grid-column: span 5
+		flex-direction: column
+		gap: var(--gap-m)
+
+	&__title
+		font-size: var(--font-size-h3)
+		font-weight: 500
+		letter-spacing: var(--letter-spacing-m)
+		line-height: var(--line-height-m)
+
+	&__caption
+		color: var(--color-neutral-500)

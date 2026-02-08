@@ -1,0 +1,61 @@
+footer.footer
+	.footer__bg
+		+image(
+			{
+				src: 'img/footer-bg.svg',
+				width: '674',
+				height: '320',
+			}
+		).footer__bg-image
+	.wrapper
+		.footer__inner
+			.footer__info
+				a(href="/").footer__logo.logo
+					+image(
+						{
+							src: 'img/logo-footer.svg',
+							width: '190',
+							height: '48'
+						}
+					).logo__img
+
+				address.footer__contacts.footer-contacts
+					.footer-contacts__info
+						a(href="mailto:info@frr-rb.ru").footer-contacts__link.link.title.title--h4 info@frr-rb.ru
+						a(href="tel:+7 (3012) 21-11-50").footer-contacts__link.link.title.title--h4 +7 (3012) 21-11-50
+					.footer-contacts__address ул. Борсоева 19Б, офис 510 #[br] Улан-Удэ, Республика Бурятия, 670000
+					.footer-contacts__socials
+						+socials({}, ['img/content/socials/tg.svg', 'img/content/socials/whatsapp.svg', 'img/content/socials/vk.svg'])
+
+			.footer__menu.footer-menu
+				.footer-menu__top
+					.footer-menu__group
+						.footer-menu__head
+							.footer-menu__title Медиа
+						.footer-menu__list
+							each item in ['Новости','Фото','Видео']
+								a(href='#').footer-menu__item.link.link--color-gray!=item
+
+					.footer-menu__group
+						.footer-menu__head
+							.footer-menu__title Проекты
+						.footer-menu__list
+							each item in ['О мастер-плане','Об опорных населенных пунктах',]
+								a(href='#').footer-menu__item.link.link--color-gray!=item
+
+					.footer-menu__group
+						.footer-menu__head
+							each item in ['Методический кабинет','FAQ','Команда','Контакты']
+								a(href='#').footer-menu__title.link!=item
+
+					.footer-menu__group.footer-menu__socials
+						+socials({}, ['img/content/socials/tg.svg', 'img/content/socials/whatsapp.svg', 'img/content/socials/vk.svg'])
+
+				.footer-menu__bottom
+					.footer-menu__privacy
+						a(href='#').footer-menu__privacy-link.link.link--color-gray Политика конфиденциальности
+						a(href='#').footer-menu__privacy-link.link.link--color-gray Пользовательское соглашение
+					.footer-menu__copyright
+						.footer-menu__copyright-title © 2024 «Company Name»
+						.footer-menu__copyright-link
+							a(href='https://www.xpage.ru/').footer-menu__link.link Сделано в Xpage
