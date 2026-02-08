@@ -1,5 +1,7 @@
 <?php
-if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
+    die();
+}
 
 use Bitrix\Iblock\ElementTable;
 use Bitrix\Main\Entity\Query;
@@ -14,8 +16,6 @@ class MenuSectionComponent extends CBitrixComponent
             "CACHE_TIME" => $arParams["CACHE_TIME"] ?? 3600,
         ];
     }
-
-
 
     private function getMenuTree()
     {
@@ -33,7 +33,6 @@ class MenuSectionComponent extends CBitrixComponent
             ])
             ->setFilter([
                 'ACTIVE' => 'Y'
-
             ])
             ->setOrder(['SORT' => 'ASC']);
 
@@ -47,7 +46,12 @@ class MenuSectionComponent extends CBitrixComponent
 
         $elementQuery = new Query(ElementTable::getEntity());
         $elementQuery
-            ->setSelect(['ID', 'NAME', 'IBLOCK_SECTION_ID'])
+            ->setSelect([
+                'ID',
+                'NAME',
+                'IBLOCK_SECTION_ID',
+                'DETAIL_TEXT'
+            ])
             ->setFilter([
                 'IBLOCK_ID' => $iblockId,
                 'ACTIVE' => 'Y'
@@ -55,17 +59,16 @@ class MenuSectionComponent extends CBitrixComponent
             ->setOrder(['SORT' => 'ASC']);
 
         $rsElements = $elementQuery->exec();
+
         while ($el = $rsElements->fetch()) {
             if ($el["IBLOCK_SECTION_ID"] && isset($sections[$el["IBLOCK_SECTION_ID"]])) {
                 $sections[$el["IBLOCK_SECTION_ID"]]["SUBMENU"][] = [
                     "NAME" => $el["NAME"],
-                    // Низкий уровень: формируем ссылку на детальную страницу вручную
-                    "URL" => $el["UF_LINK"],
+                    "URL" => $el["DETAIL_TEXT"],
                     "IS_ELEMENT" => "Y"
                 ];
             }
         }
-
         return $this->buildTree($sections);
     }
 
@@ -83,6 +86,7 @@ class MenuSectionComponent extends CBitrixComponent
         }
         return $tree;
     }
+
     public function executeComponent()
     {
         if ($this->startResultCache()) {
